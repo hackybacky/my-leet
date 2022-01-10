@@ -35,7 +35,7 @@ public:
              carry=su/10;
             if(l1 or l2 or carry)node->next=new(ListNode);
             node->val=su%10;
-            cout<<node->val<<endl;
+           // cout<<node->val<<endl;
             node=node->next;
             
            
