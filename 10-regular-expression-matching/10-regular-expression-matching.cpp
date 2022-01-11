@@ -1,10 +1,9 @@
 class Solution {
 public:
     int dp[32][32];
-
+    int n,m;
 bool f(int i,int j,string &s1,string &s2){
     //const init
-    int n=s1.size(),m=s2.size();
     // base case
     if(j>=m and i>=n) return 1;
     if(j>=m) return 0;
@@ -26,6 +25,7 @@ bool f(int i,int j,string &s1,string &s2){
 
 bool isMatch(string s1, string s2) {
     memset(dp,-1,sizeof dp);
+    n=s1.size();m=s2.size();
         return f(0,0,s1,s2);
     }
 };
