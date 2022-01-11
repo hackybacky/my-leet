@@ -7,7 +7,7 @@ public:
         while(x){
             int rem=x%10;
             res*=p;
-            cout<<res<<endl;
+            //cout<<res<<endl;
             res+=rem;
             
             
