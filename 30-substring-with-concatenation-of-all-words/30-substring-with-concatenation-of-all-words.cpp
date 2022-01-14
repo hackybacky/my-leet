@@ -4,11 +4,11 @@ public:
         int n=s.size();
         int m=words.size();
         int wl=words[0].size();
-        map<string ,int> mp;
+        unordered_map<string ,int> mp;
         for(auto it : words)mp[it]++;
         vector<int>indi;
         for(int i=0; i<n-m*wl+1 ;i++){
-            map<string , int> temp;
+            unordered_map<string , int> temp;
             for(int j=i; j<i+m*wl;j+=wl){
                 temp[s.substr(j,wl)]++;
             }
