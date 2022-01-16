@@ -10,7 +10,7 @@ public:
             for(int i=mid-1 ; i>=0 ; i--){
                 
                 int x=tasks[i];
-                if(x<=(*s.begin())){s.erase(s.begin());continue;}
+                
                 
                 auto it =s.lower_bound(x);
                 if(it==s.end()){
