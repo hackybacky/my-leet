@@ -1,40 +1,59 @@
 class Solution {
-private:
-    bool isValid(vector<int>& tasks, vector<int>& workers, const int& MAX_TASKS, int pills, int strength){
-        multiset<int> workersMultiset(workers.end() - MAX_TASKS, workers.end());
-        for(int i = MAX_TASKS - 1; i >= 0; --i){
-            auto it = workersMultiset.lower_bound(tasks[i]);
-            if(it == workersMultiset.end()){
-                pills -= 1;
-                it = workersMultiset.lower_bound(tasks[i] - strength);
-            }
-            if(it == workersMultiset.end() || pills < 0){
-                return false;
-            }
-            workersMultiset.erase(it);
-        }
-        return true;
-    }
-    
 public:
-    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {
-        const int T = tasks.size();
-        const int W = workers.size();
-        
-        sort(tasks.begin(), tasks.end());
-        sort(workers.begin(), workers.end());
-        
-        int l = 0;
-        int r = min(T, W);
-        while(l != r){
-            int mid = (l + r + 1) / 2;
-            if(isValid(tasks, workers, mid, pills, strength)){
-                l = mid;
-            }else{
-                r = mid - 1;
+    int n,m;
+    int pills, strengt;
+    bool check(int mid ,vector<int> &workers ,vector<int>&tasks){
+            
+            if(mid>m)return false;
+            multiset<int> s(workers.end()-mid,workers.end());
+            
+            // if(mid==3)for(auto it : s)cout<<it<< " ";
+            // cout<<endl;
+            
+            for(int i=mid-1 ; i>=0 ; i--){
+                
+                int x=tasks[i];
+                auto it =s.lower_bound(x);
+                if(it==s.end()){
+                    if(pills==0){
+                        
+                        return false;
+                    }
+                    //cout<<mid<<endl;
+                    int y= x-strengt;
+                    auto it2= s.lower_bound(y);
+                    
+                    if(it2==s.end()){return false;}
+                    else s.erase(it2);
+                    pills--;
+                    
+                }
+                else{
+                    
+                    s.erase(it);
+                }
             }
+            return true;
         }
+    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int dp, int strength) {
+     n=tasks.size();
+         strengt=strength;
+         m=workers.size();
+        sort(tasks.begin(),tasks.end());
+        sort(workers.begin(),workers.end());
         
-        return r;
+        int d=20;
+        int l=0,r=min(n,m);
+        while(l<=r){
+            pills=dp;
+            int mid=(l+r)/2;
+            if(check(mid,workers,tasks)){
+                l=mid+1;
+                
+            }
+            else r=mid-1;
+            
+        }
+        return l-1;
     }
 };
