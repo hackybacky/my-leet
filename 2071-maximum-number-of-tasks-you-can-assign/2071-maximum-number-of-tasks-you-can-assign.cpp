@@ -1,25 +1,29 @@
 class Solution {
 public:
-    int n,m;
-    int pills, strengt;
-    bool check(int mid ,vector<int> &workers ,vector<int>&tasks){
+    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int pills, int strength) {
+        int n=tasks.size();
+        int m=workers.size();
+        sort(tasks.begin(),tasks.end());
+        sort(workers.begin(),workers.end());
+        auto check=[&](int mid){
+            if(mid>m)return false;
+            multiset<int> s;
+            for(int i=0 ; i< mid ; i++){
+                s.insert(workers[m-1-i]);
+            }
+            // if(mid==3)for(auto it : s)cout<<it<< " ";
+            // cout<<endl;
             
-            
-            multiset<int> s(workers.end()-mid,workers.end());
-
             for(int i=mid-1 ; i>=0 ; i--){
-                
                 int x=tasks[i];
                 
-                
-                auto it =s.lower_bound(x);
-                if(it==s.end()){
-                    if(pills==0){
+                if(x>(*s.rbegin())){
+                    if(!pills){
                         
                         return false;
                     }
                     //cout<<mid<<endl;
-                    int y= x-strengt;
+                    int y= x-strength;
                     auto it2= s.lower_bound(y);
                     
                     if(it2==s.end()){return false;}
@@ -28,30 +32,22 @@ public:
                     
                 }
                 else{
-                    
+                    auto it =s.lower_bound(x);
                     s.erase(it);
                 }
             }
             return true;
-        }
-    int maxTaskAssign(vector<int>& tasks, vector<int>& workers, int dp, int strength) {
-     n=tasks.size();
-         strengt=strength;
-         m=workers.size();
-        sort(tasks.begin(),tasks.end());
-        sort(workers.begin(),workers.end());
-        
-        int d=20;
-        int l=0,r=min(n,m);
+        };
+        int dp=pills;
+        int l=0,r=n;
         while(l<=r){
-            pills=dp;
             int mid=(l+r)/2;
-            if(check(mid,workers,tasks)){
+            if(check(mid)){
                 l=mid+1;
                 
             }
             else r=mid-1;
-            
+            pills=dp;
         }
         return l-1;
     }
