@@ -4,15 +4,14 @@ public:
     int pills, strengt;
     bool check(int mid ,vector<int> &workers ,vector<int>&tasks){
             
-            if(mid>m)return false;
+            
             multiset<int> s(workers.end()-mid,workers.end());
-            
-            // if(mid==3)for(auto it : s)cout<<it<< " ";
-            // cout<<endl;
-            
+
             for(int i=mid-1 ; i>=0 ; i--){
                 
                 int x=tasks[i];
+                if(x<=(*s.begin())){s.erase(s.begin());continue;}
+                
                 auto it =s.lower_bound(x);
                 if(it==s.end()){
                     if(pills==0){
