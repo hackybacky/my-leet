@@ -14,10 +14,10 @@ public:
                 dp[i]+=dp[i+next+1];
             }
             dp[i]=max(dp[i],dp[i+1]);
-            ans=max(dp[i],ans);
+            //ans=max(dp[i],ans);
             
         }
-        return ans;
+        return dp[0];
         
     }
 };
