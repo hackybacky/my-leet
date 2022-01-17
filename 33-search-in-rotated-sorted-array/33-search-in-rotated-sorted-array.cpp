@@ -1,15 +1,14 @@
 class Solution {
 public:
     int find_point(vector<int> nums, int target,int l ,int r){
-        // if(l>=nums.size())return 0;
-        // if(l<0)return 0;
+        
         if(l>r)return 0;
         
         int mid=(l+r)/2;
         if(mid+1< nums.size() and nums[mid] >nums[mid+1]){
             return mid+1;
         }
-        if( mid-1>=0 and nums[mid]<nums[mid-1])return mid;
+        // if( mid-1>=0 and nums[mid]<nums[mid-1])return mid;
         
         return max(find_point(nums,target,l,mid-1),find_point(nums,target,mid+1,r));
         
