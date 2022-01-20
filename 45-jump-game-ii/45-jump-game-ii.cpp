@@ -9,7 +9,7 @@ public:
                 dp[i]=min(1+dp[j],dp[i]);
             }
         }
-        for(auto it : dp)cout<<it<<" ";
+        
         return dp[0];
         
     }
