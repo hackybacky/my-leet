@@ -24,15 +24,15 @@ public:
     vector<vector<string>> lans;
     bool solve(vector<string> board, int col  ){
         
-        if(col>=N){return true;}
+        if(col>=N){lans.push_back(board);return true;}
         
         for(int i=0 ; i< N ; i++){
             
             if(check(board,i,col)){
                 board[i][col]='Q';
-                if(solve(board,col+1)){
-                    lans.push_back(board);
-                }
+                (solve(board,col+1));
+                    
+                
                 
                 board[i][col]='.';
 
