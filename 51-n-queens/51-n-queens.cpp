@@ -23,9 +23,9 @@ public:
     }
     
     vector<vector<string>> lans;
-    bool solve(vector<string> board, int col  ){
+    void solve(vector<string> board, int col  ){
         
-        if(col>=N){lans.push_back(board);return true;}
+        if(col>=N){lans.push_back(board);return ;}
         
         for(int i=0 ; i< N ; i++){
             
@@ -40,7 +40,7 @@ public:
             }
             
         }
-        return false;
+       // return false;
         
     }
     vector<vector<string>> solveNQueens(int n) {
