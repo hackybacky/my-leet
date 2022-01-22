@@ -2,22 +2,23 @@ class Solution {
 public:
     int N;
     bool check(vector<string > board,int row,int col){
-        int i, j;
-
-        /* Check this row on left side */
-        for (i = 0; i < col; i++)
-            if (board[row][i]=='Q')
-                return false;
-
-        /* Check upper diagonal on left side */
-        for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
-            if (board[i][j]=='Q')
-                return false;
-
-        /* Check lower diagonal on left side */
-        for (i = row, j = col; j >= 0 && i < N; i++, j--)
-            if (board[i][j]=='Q')
-                return false;
+        
+        for(int k=0 ; k<col ; k++){
+            if(board[row][k]=='Q')return false;
+        }
+        
+        int i=row,j=col;
+        
+        while(i>=0 and j>=0 ){
+            if(board[i][j]=='Q')return false;
+            i--,j--;
+        }
+        i=row,j=col;
+        while(i<N and j>=0){
+            if(board[i][j]=='Q')return false;
+            i++,j--;
+        }
+        
         return true;
     }
     
