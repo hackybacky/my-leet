@@ -25,7 +25,7 @@ public:
     vector<vector<string>> lans;
     void solve(vector<string> board, int col  ){
         
-        if(col>=N){lans.push_back(board);return ;}
+        if(col>=N){lans.push_back(board);}
         
         for(int i=0 ; i< N ; i++){
             
