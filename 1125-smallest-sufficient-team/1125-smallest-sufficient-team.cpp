@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> smallestSufficientTeam(vector<string>& req_skills, vector<vector<string>>& people) {
         
-        unordered_map<string,int> skill_mp;
+        map<string,int> skill_mp;
         
         for(int i=0 ; i<req_skills.size(); i++){
             skill_mp[req_skills[i]]=i;
