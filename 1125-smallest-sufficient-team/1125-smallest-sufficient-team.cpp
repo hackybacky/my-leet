@@ -23,7 +23,7 @@ public:
                 
                 int comb=(it.first | cur_skills);
                 
-                if(dp.find(comb)==dp.end() || dp[comb].size()>dp[(it.first)].size()+1){
+                if(dp.find(comb)==dp.end()  || dp[comb].size()>(it.second).size()+1){
                     dp[comb]=it.second;
                     dp[comb].push_back(i);
                 }
