@@ -9,8 +9,8 @@ public:
         }
         int n=req_skills.size();
         int person_size=people.size();
-        unordered_map<int,vector<int>> dp;
-        dp.reserve(1<<n);
+       map<int,vector<int>> dp;
+        //dp.reserve(1<<n);
         dp[0]={};
         for(int i=0 ; i<person_size ; i++){
             
