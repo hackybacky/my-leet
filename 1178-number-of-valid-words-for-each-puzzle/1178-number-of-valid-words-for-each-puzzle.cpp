@@ -9,12 +9,13 @@ public:
     }
     vector<int> findNumOfValidWords(vector<string>& words, vector<string>& puzzles) {
         unordered_map<int,int> words_map;
-        
+        //words_map.reserve((1<<26)-1);
         for(auto it : words){
             
             words_map[bitmap(it)]++;
         }
         vector<int>ans;
+        
         for(auto it :puzzles ){
             int msk , mskcur=bitmap(it);
             msk=mskcur;
