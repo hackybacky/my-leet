@@ -20,12 +20,12 @@ public:
             msk=mskcur;
             int first = bitmap(it.substr(0,1));
             int cnt=0;
-            while(msk>=1){
+            for(msk=mskcur; msk >=1;msk=(msk-1)&mskcur){
                 if( words_map.find(msk)!=words_map.end() and first&msk){
                     cnt+=words_map[msk];
                     
                 }
-                msk=(msk-1)&mskcur;
+                
             }
             ans.push_back(cnt);
         }
