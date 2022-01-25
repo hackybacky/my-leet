@@ -8,7 +8,7 @@ public:
         return ans;
     }
     vector<int> findNumOfValidWords(vector<string>& words, vector<string>& puzzles) {
-        map<int,int> words_map;
+        unordered_map<int,int> words_map;
         
         for(auto it : words){
             
