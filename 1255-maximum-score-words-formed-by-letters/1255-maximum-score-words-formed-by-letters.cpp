@@ -9,25 +9,15 @@ public:
             ans=max(ans,an);
             return ;
         }
-        bool flag=true;
-        map<char,int>cur;
-        for(auto it : words[i]){
-            cur[it]++;
-        }
-        for(auto it : words[i]){
-            if(freq[it]<cur[it])flag=false;
-        }
         
-        if(!flag){
-            solve(words,score,i+1,freq,an);
-            
-        }
-        else{
             int t=0;
+            bool flag=false;
             for(auto it :words[i]){
                 freq[it]--;
                 t+=score[it-'a'];
+                if(freq[it]<0)flag=true;
             }
+            if(!flag)
             solve(words,score,i+1,freq,an+t);
             
             for(auto it : words[i]){
@@ -35,7 +25,7 @@ public:
             }
             solve(words,score,i+1,freq,an);
             
-        }
+        
         
         
         
