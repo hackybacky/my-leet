@@ -18,12 +18,12 @@ public:
         
         ListNode *iter=new ListNode();
         ListNode * ans=iter;
-        cout<<head->val<<endl;
+       // cout<<head->val<<endl;
         
         while(head!=NULL){
             if(head->next && head->val ==head->next->val){
                 int curval=head->val;
-               // cout<<curval<<endl;
+               
                 while(head!=NULL and head->val==curval){
                     head=head->next;
                 }
@@ -34,10 +34,7 @@ public:
                 iter=iter->next;
                 head=head->next;
             }
-            //cout<<head->val<<endl;
-            // head=head->next;
-            
-         //   cout<<"hello"<<endl;
+          
            
         }
         iter->next=nullptr;
