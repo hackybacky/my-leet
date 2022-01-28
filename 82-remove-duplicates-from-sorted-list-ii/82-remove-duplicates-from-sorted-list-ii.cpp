@@ -23,7 +23,7 @@ public:
         while(head!=NULL){
             if(head->next && head->val ==head->next->val){
                 int curval=head->val;
-                cout<<curval<<endl;
+               // cout<<curval<<endl;
                 while(head!=NULL and head->val==curval){
                     head=head->next;
                 }
@@ -37,7 +37,7 @@ public:
             //cout<<head->val<<endl;
             // head=head->next;
             
-            cout<<"hello"<<endl;
+         //   cout<<"hello"<<endl;
            
         }
         iter->next=nullptr;
