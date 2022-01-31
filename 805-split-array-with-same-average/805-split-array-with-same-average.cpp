@@ -7,10 +7,10 @@ public:
         int n=nums.size();
         vector<int > dp(su+10,0);
         
-       // dp[0]=0;
+        dp[0]=1;
        
-       dp[nums[0]] = 2;
-        for(int i=1; i<n; i++) {
+      
+        for(int i=0; i<n; i++) {
             for(int s=su-nums[i]; s>=0; s--) {
                 if(dp[s])
                     dp[s+nums[i]] |= (dp[s]<<1);
@@ -18,9 +18,14 @@ public:
             dp[nums[i]] |= 2;
         }
     
-         for(int len=1; len<n; len++) {
-            if( (su*len)%n == 0 && ((1<<len) & dp[su*len/n])) {
-                return true;
+        for(int s=0; s<=su; s++){
+            int len=dp[s];
+            
+            for(int j=1; j<=n-1;j++){
+                if( len & (1<<j)){
+                    if(j==4)cout<<"jjljadf"<<endl;
+                    if( (su*j)%n==0 and (su*j)/n==s){cout<<j<<endl;return true;}
+                }
             }
         }
         
