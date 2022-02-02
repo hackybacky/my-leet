@@ -2,7 +2,7 @@ class Solution {
 public:
     int dp[1001][201][2];
     int n;
-    int recur(int i,int k,bool check,vector<int>prices){
+    int recur(int i,int k,bool check,vector<int>&prices){
         if(i==n)return 0;
         if(k==0)return 0;
         
