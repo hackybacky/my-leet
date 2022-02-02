@@ -1,6 +1,6 @@
 class Solution {
 public:
-    unordered_map<int,int> dp;
+  map<int,int> dp;
     int N;
     
         
