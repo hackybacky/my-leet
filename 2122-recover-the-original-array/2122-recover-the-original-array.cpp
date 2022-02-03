@@ -20,7 +20,7 @@ public:
             int sz=s.size();
             bool flag=true;
             vector<int> ans;
-            while(sz>0){
+            while(!s.empty()){
                 int f=*(s.begin());
                 auto it = s.find(f+k);
                 if(it==s.end()){
