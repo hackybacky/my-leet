@@ -3,7 +3,7 @@ public:
     
     int findMaxLength(vector<int>& nums) {
         
-       map<int,int> mp;
+       unordered_map<int,int> mp;
        // mp[0]=0;
         int ans=0;
         int su=0;
