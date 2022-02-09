@@ -11,7 +11,7 @@ public:
         
         for(auto it : m ){
             if(k==0 and it.second>1)cnt++;
-            else if ( k>0 and m.count(it.first+k))cnt++;
+            else if ( k>0 and m.find(it.first+k)!=m.end())cnt++;
         }
         return cnt;
     }
