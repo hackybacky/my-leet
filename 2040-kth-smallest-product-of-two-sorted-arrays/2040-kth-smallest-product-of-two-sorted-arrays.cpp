@@ -1,5 +1,6 @@
 class Solution {
 public:
+    const long long high=pow(10ll , 10 );
     long long kthSmallestProduct(vector<int>& nums1, vector<int>& nums2, long long k) {
         
         auto fn = [&](double val) {
@@ -13,7 +14,7 @@ public:
             return ans; 
         }; 
         
-        long long lo = -pow(10ll, 10), hi = pow(10ll, 10)+1;
+        long long lo = -high, hi = high+1;
         while (lo < hi) {
             long long mid = lo + (hi - lo)/2; 
             if (fn(mid) < k) lo = mid + 1; 
