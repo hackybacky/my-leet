@@ -30,7 +30,7 @@ public:
             }
             cnt++;
         }
-        cout<<cnt<<endl;
+        //cout<<cnt<<endl;
         return cnt==numCourses;
         
     }
