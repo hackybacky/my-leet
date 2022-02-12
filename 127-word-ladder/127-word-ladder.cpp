@@ -9,30 +9,31 @@ public:
     
         
         unordered_set<string> st(wordList.begin(),wordList.end());
+        map<string,int> dist;
+        int maxi=1e9;
+        bool flag=false;
         while(!q.empty()){
-            int n=q.size();
-           for(int i=0;i<n;i++){
-                string s =q.front();
+           string t = q.front();
             q.pop();
-            if(s==endWord)return ans+1;
-            st.erase(s);
-            for(int i=0; i< m ; i++){
-                string c=s;
-                for(int j=0; j<26 ; j++){
+            if(t==endWord){
+                flag=true;
+                maxi = min(dist[t],maxi);
+            }
+            for(int i=0 ; i< m ; i++){
+                string c=t;
+                for(int j=0; j<26; j++){
                     c[i]='a'+j;
-                    auto it =st.find(c);
-                    if(it!=st.end() ){
-                       q.push(c);
-                        //cout<<c<<endl;
-                        
+                    if( st.find(c)!=st.end() and c!=t){
+                        q.push(c);
+                        dist[c]=dist[t]+1;
+                        st.erase(c);
                     }
                 }
-                
             }
-           }
-            ans++;
             
         }
-        return 0;
+       // for(auto it : dist)cout<<it.first<<" "<<it.second<<endl;
+        if(!flag)return 0;
+        return maxi+1;
     }
 };
