@@ -12,6 +12,7 @@ public:
         map<string,int> dist;
         int maxi=1e9;
         bool flag=false;
+       
         while(!q.empty()){
            string t = q.front();
             q.pop();
@@ -27,11 +28,13 @@ public:
                         q.push(c);
                         dist[c]=dist[t]+1;
                         st.erase(c);
+                        
                     }
                 }
             }
             
         }
+        
        // for(auto it : dist)cout<<it.first<<" "<<it.second<<endl;
         if(!flag)return 0;
         return maxi+1;
