@@ -27,7 +27,7 @@ public:
             
              visited[node]=true;
             for(auto it :graph[node]){
-                if(!visited[it.first] and it.second>=time){
+                if(it.second>=time){
                     q.push({it.second,it.first});
                    
                 }
