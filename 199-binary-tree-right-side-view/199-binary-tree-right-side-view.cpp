@@ -13,9 +13,10 @@ class Solution {
     
 public:
     vector<int>ans;
+    int sz;
     void print(TreeNode * root,int lv){
         if(!root)return;
-        if(ans.size()<=lv)ans.push_back(root->val);
+        if(sz<=lv)sz++,ans.push_back(root->val);
         print(root->right ,lv+1);
         print(root->left,lv+1);
     }
