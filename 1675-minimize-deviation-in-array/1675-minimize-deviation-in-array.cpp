@@ -15,8 +15,8 @@ public:
             int t=pq.top();
             pq.pop();
             if(t%2==0){
-                pq.push(t/2);
-                mn=min(mn,t/2);
+            pq.push(t/2);
+               mn=min(mn,t/2);
             }
             else{
                 break;
