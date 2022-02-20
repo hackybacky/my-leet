@@ -8,7 +8,8 @@ public:
         int ans=0;
         sort(intervals.begin(),intervals.end(),cmp);
         int last=-1;
-        for(int i=0; i<intervals.size(); i++){
+        int n=intervals.size();
+        for(int i=0; i<n; i++){
             if(last>=intervals[i][1]){
                 ans++;
             }
@@ -16,6 +17,6 @@ public:
                 last=max(last,intervals[i][1]);
             }
         }
-        return intervals.size()-ans;
+        return n-ans;
     }
 };
