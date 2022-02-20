@@ -4,7 +4,7 @@ public:
         return a[0]<b[0] or (a[0]==b[0] and a[1]>b[1]);
     }
     int removeCoveredIntervals(vector<vector<int>>& intervals) {
-        map<int,bool>check;
+        unordered_map<int,bool>check;
         int ans=0;
         sort(intervals.begin(),intervals.end(),cmp);
         for(int i=0; i<intervals.size(); i++){
