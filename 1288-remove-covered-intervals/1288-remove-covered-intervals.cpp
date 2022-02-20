@@ -17,6 +17,7 @@ public:
                     //cout<<j<<" "<<i<<" "<<db<<endl;
                     ans++;
                 }
+                if(da>b)break;
             }
         }
         return intervals.size()-ans;
