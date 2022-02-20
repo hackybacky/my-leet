@@ -7,17 +7,13 @@ public:
         unordered_map<int,bool>check;
         int ans=0;
         sort(intervals.begin(),intervals.end(),cmp);
+        int last=-1;
         for(int i=0; i<intervals.size(); i++){
-            int a=intervals[i][0],b=intervals[i][1];
-            for(int j=i+1; j<intervals.size();j++){
-                if(check[j])continue;
-                int da = intervals[j][0],db=intervals[j][1];
-                if(db<=b and !check[j]){
-                    check[j]=true;
-                    //cout<<j<<" "<<i<<" "<<db<<endl;
-                    ans++;
-                }
-                if(da>b)break;
+            if(last>=intervals[i][1]){
+                ans++;
+            }
+            else{
+                last=max(last,intervals[i][1]);
             }
         }
         return intervals.size()-ans;
