@@ -19,10 +19,10 @@ public:
                     }
                     else break;
                     int d= k-1>=j?height[i][k-1]:1e9;              
-                    int curh= min(height[i][k],d);
-                   // if(i==2 and j==2)cout<<curh<<" "<<right<<endl;
-                    ans=max(ans,curh*right);
-                    height[i][k]=curh;
+                    height[i][k]= min(height[i][k],d);
+                  
+                    ans=max(ans,height[i][k]*right);
+                   
                    // if(i==2 and j==0)cout<<curh<<endl;
                 }
             }
