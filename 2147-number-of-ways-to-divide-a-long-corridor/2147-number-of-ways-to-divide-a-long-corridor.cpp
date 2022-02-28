@@ -14,6 +14,7 @@ public:
         for(int i=0; i< n ; i++){
             
             if(s[i]=='S'){
+                cnt++;
                 k++;
                 if(k==3){
                     ans=(ans*(i-j))%mod;
@@ -23,7 +24,7 @@ public:
                 
             }
         }
-        cnt=count(s.begin(),s.end(),'S');
+       // cnt=count(s.begin(),s.end(),'S');
         if(cnt%2==1 or cnt==0)return 0;
         return ans;
         
