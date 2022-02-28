@@ -1,11 +1,11 @@
 class Solution {
 public:
-    int numberOfWays(string corridor) {
+    int numberOfWays(string s) {
         long long ans=0;
         const int mod =1e9+7;
         
-        int n =corridor.size();
-        string s=corridor;
+        int n =s.size();
+      //  string s=corridor;
         int cnt=0;
         ans=1;
         int seat=0;
