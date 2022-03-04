@@ -1,7 +1,7 @@
 class Solution {
 public:
     double champagneTower(int poured, int query_row, int query_glass) {
-        vector<vector<double>> dp(101,vector<double>(101,0));
+        vector<vector<double>> dp(query_row+2,vector<double>(query_row+2,0));
         
         dp[0][0]=poured*1.0;
         
