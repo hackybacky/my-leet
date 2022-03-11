@@ -26,7 +26,7 @@ public:
         for(int i=0; i<req-1; i++){
             node = node ->next;
         }
-        cout<<node->val<<" "<<req<<endl;
+        //cout<<node->val<<" "<<req<<endl;
         auto nhead = node ->next;
         node -> next =NULL;
         return nhead;
