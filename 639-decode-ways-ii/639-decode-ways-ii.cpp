@@ -17,29 +17,29 @@ public:
         
         long long b =0;
         if(i+1<n ){
-            // if(s[i]=='*' and s[i+1]=='*')b=25*recur(i+2);
-            // else if((s[i]=='1' or s[i]=='2') and s[i+1]=='*'){
-            //     b=((s[i]=='1')?9:6)*recur(i+2);
-            // }
-            // else if(s[i]=='*' and s[i+1]-'0'<=6){
-            //     b=2*recur(i+2);
-            // }
-            // else if((s[i]=='1' and s[i+1]-'0'<=9) or (s[i]=='2' and s[i+1]-'0'<=6)){
-            //     b=recur(i+2);
-            // }
-            // else if(s[i]=='*') b=(recur(i+2));
-            if(s[i]=='*' && s[i+1]=='*'){
-                b=15*recur(i+2);
-            }else if((s[i]=='1' || s[i]=='2') && s[i+1]=='*'){
-                b=(s[i]=='1'?9:6)*recur(i+2);
-            }else if(s[i]=='*' && s[i+1]-'0'<=6){
-                b=2*(recur(i+2));
-            }else if((s[i]=='1' && s[i+1]-'0'<=9)||(s[i]=='2' && s[i+1]-'0'<=6)){
-               // cout<<"called"<<endl;
-                b=recur(i+2);
-            }else if(s[i]=='*'){
+            if(s[i]=='*' and s[i+1]=='*')b=15*recur(i+2);
+            else if((s[i]=='1' or s[i]=='2') and s[i+1]=='*'){
+                b=((s[i]=='1')?9:6)*recur(i+2);
+            }
+            else if(s[i]=='*' and s[i+1]-'0'<=6){
+                b=2*recur(i+2);
+            }
+            else if((s[i]=='1' and s[i+1]-'0'<=9) or (s[i]=='2' and s[i+1]-'0'<=6)){
                 b=recur(i+2);
             }
+            else if(s[i]=='*') b=(recur(i+2));
+            // if(s[i]=='*' && s[i+1]=='*'){
+            //     b=15*recur(i+2);
+            // }else if((s[i]=='1' || s[i]=='2') && s[i+1]=='*'){
+            //     b=(s[i]=='1'?9:6)*recur(i+2);
+            // }else if(s[i]=='*' && s[i+1]-'0'<=6){
+            //     b=2*(recur(i+2));
+            // }else if((s[i]=='1' && s[i+1]-'0'<=9)||(s[i]=='2' && s[i+1]-'0'<=6)){
+            //    // cout<<"called"<<endl;
+            //     b=recur(i+2);
+            // }else if(s[i]=='*'){
+            //     b=recur(i+2);
+            // }
         }
         return dp[i]=(a+b)%mod;
     }
