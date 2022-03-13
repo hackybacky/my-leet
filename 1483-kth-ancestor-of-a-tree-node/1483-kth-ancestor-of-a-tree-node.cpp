@@ -3,7 +3,7 @@ public:
     vector<vector<int>> fan;
     TreeAncestor(int n, vector<int>& parent) {
         
-        fan.assign(n*2,vector<int>(30,-1));
+        fan.assign(n*2,vector<int>(21,-1));
         
         for(int i=0; i < n ; i++){
             fan[i][0]=parent[i];
