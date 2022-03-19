@@ -6,6 +6,7 @@ public:
     int l;
     int recur(int i ,int used,string &floor){
         if(i==n)return 0;
+        if(dp[i][used]!=-1)return dp[i][used];
         if(avail<=used or i+l>n){
             int ans=0;
             
@@ -13,11 +14,10 @@ public:
                 ans+=(floor[j]=='1');
             }
             if(used<avail){
-                return max(0,ans-(avail-used)*l);
+                return  dp[i][used]= max(0,ans-(avail-used)*l);
             }
-            return ans;
+            return dp[i][used]=ans;
         }
-        if(dp[i][used]!=-1)return dp[i][used];
         
         int ans;
         if(floor[i]=='0'){
@@ -33,7 +33,8 @@ public:
         n = floor.size();
         l=len;
         avail= num;
-        dp.assign(n+1,vector<int>(num+1,-1));
+        //cout<<n;
+        dp.assign(n+5,vector<int>(num+5,-1));
         
         int ans = recur(0,0,floor);
         return ans;
