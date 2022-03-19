@@ -16,7 +16,8 @@ public:
         
         int ans = mp[maxi].top();
         mp[maxi].pop();
-        if(mp[freq[ans]--].size()==0)maxi--;
+        if(mp[maxi].size()==0)maxi--;
+        freq[ans]--;
         return ans;
     }
 };
