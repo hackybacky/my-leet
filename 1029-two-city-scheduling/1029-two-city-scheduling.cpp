@@ -1,8 +1,8 @@
 class Solution {
 public:
     int n;
-    long long dp[101][101];
-    long long  recur( int i , int f  ,vector<vector<int>>&a){
+    int dp[101][101];
+    int  recur( int i , int f  ,vector<vector<int>>&a){
         if(i==n){
             if(f==n/2 )return 0;
             else return 1e6;
@@ -22,7 +22,7 @@ public:
     int twoCitySchedCost(vector<vector<int>>& a) {
         n=a.size();
         memset(dp,-1,sizeof(dp));
-        long long ans = recur(0,0,a);
+        int  ans = recur(0,0,a);
         return ans;
     }
 };
