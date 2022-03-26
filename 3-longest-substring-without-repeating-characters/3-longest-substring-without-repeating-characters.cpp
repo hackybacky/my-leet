@@ -5,7 +5,7 @@ public:
         int n=s.size();
         vector<int> indi(2777,-1);
         int ans=0;
-        //ayush lomdu
+        //ayush code mat dekh
         for(int i=0 ; i< n ;i++){
             start=max(indi[s[i]],start);
             indi[s[i]]=i;
