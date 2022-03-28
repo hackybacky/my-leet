@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[501][502];
+    vector<vector<int>> dp;
     int n;
     int recur(int  i  , int time ,vector<int>&a){
         if(i==n)return 0;
@@ -12,9 +12,10 @@ public:
         return dp[i][time]=ans;
     }
     int maxSatisfaction(vector<int>& a) {
-        memset(dp,-1,sizeof(dp));
+        
         sort(a.begin(),a.end());
         n = a.size();
+        dp.resize(n+1,vector<int>(n+2,-1));
         return recur(0,1,a);
     }
 };
