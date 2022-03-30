@@ -16,7 +16,7 @@ public:
             int k =r;
             while(k>l and s[l]!=s[k])k--;
             
-            if(k>l)ans3=(r-k)+recur(l+1,k-1);
+            if(k>l)ans3=(r-k+1)+recur(l+1,k-1);
         }
        // cout<<ans<< " "<<ans2<<" "<<ans3<<endl;
         return dp[l][r]=min({ans,ans2,ans3});
