@@ -13,7 +13,7 @@ public:
         if(s[l]==s[r])ans=recur(l+1,r-1);
         else {
             ans2= 1+min(recur(l+1,r),recur(l,r-1));
-            int k =r;
+           // int k =r;
           //  while(k>l and s[l]!=s[k])k--;
             
           //  if(k>l)ans3=(r-k+1)+recur(l+1,k-1);
