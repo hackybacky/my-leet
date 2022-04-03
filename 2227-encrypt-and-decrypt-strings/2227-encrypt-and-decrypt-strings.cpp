@@ -1,7 +1,7 @@
 class Encrypter {
 public:
-    map<char,string > en;
-    map<string,int> dc;
+    unordered_map<char,string > en;
+    unordered_map<string,int> dc;
     
     Encrypter(vector<char>& keys, vector<string>& value, vector<string>& dictionary) {
         
