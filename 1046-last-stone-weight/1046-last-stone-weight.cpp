@@ -1,21 +1,24 @@
 class Solution {
 public:
     int lastStoneWeight(vector<int>& stones) {
+        multiset<int> s;
         
-        priority_queue<int>pq;
+        for(auto it :stones)s.insert(it);
         
-        for(auto it : stones)pq.push(it);
-        
-        while(!pq.empty() ){
-            int t = pq.top();
-            pq.pop();
-            if(pq.empty())return t;
-            int s = pq.top();
-            pq.pop();
-            int d = t-s;
-            if(d!=0){
-                pq.push(d);
+        while(!s.empty()){
+            auto it = *(prev(s.end()));
+            s.erase(prev(s.end()));
+            
+            if(s.empty())return it;
+            
+            auto second = *(prev(s.end()));
+            s.erase(prev(s.end()));
+            
+            if(it-second>0){
+                s.insert(it-second);
             }
+            
+            
         }
         return 0;
     }
