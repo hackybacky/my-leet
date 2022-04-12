@@ -30,7 +30,7 @@ public:
                     if(cnt==3){
                         
                         board[i][j]=2;
-                        cout<<"hello"<<endl;
+                        //cout<<"hello"<<endl;
                     }
                 }
             }
