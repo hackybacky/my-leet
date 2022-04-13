@@ -28,7 +28,7 @@ public:
             crow=lrow-1;
             ccol=col;
             while(crow>row){
-               // cout<<"hello"<<endl;
+               
                 mat[crow][ccol]=cnt++;
                 crow--;
             }
