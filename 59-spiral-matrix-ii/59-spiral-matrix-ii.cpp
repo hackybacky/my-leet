@@ -1,39 +1,30 @@
 class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
-        int row = 0 ,col=0 , lrow  = n-1 ,lcol=n-1;
-        vector<vector<int>> mat(n,vector<int>(n,0));
-        int cnt=1;
-        while(row<=lrow and col <= lcol){
-            int crow = row , ccol = col;
+        vector<vector<int>> v( n, vector<int> (n));
+         int i=0; int k=1;
+        while(k<=n*n){
+            int j=i;
+            while(j<n-i){
+                v[i][j++]=k++;
+            }
+            j=i+1;
             
-            while(ccol<=lcol){
-                mat[crow][ccol]=cnt++;
-                ccol++;
+            while(j<n-i){
+                v[j++][n-i-1]=k++;
             }
-            if(row==lrow)break;
-            
-            crow = row+1;
-            ccol = lcol;
-            while(crow<=lrow){
-                mat[crow][ccol]=cnt++;
-                crow++;
+            j=n-i-2;
+            while(j>i){
+                v[n-i-1][j--]=k++;
             }
-            ccol = lcol-1;
-            crow = lrow;
-            while(ccol>=col){
-                mat[crow][ccol]=cnt++;
-                ccol--;
+            j=n-i-1;
+            while(j>i){
+                v[j--][i]=k++;
             }
-            crow=lrow-1;
-            ccol=col;
-            while(crow>row){
+            i++;
                
-                mat[crow][ccol]=cnt++;
-                crow--;
             }
-            row++,col++,lcol--,lrow--;
+        return v;
         }
-        return mat;
-    }
+    
 };
