@@ -55,7 +55,7 @@ void mergesort(vector<pair<int,int>>&arr , int l ,int r){
             arr.push_back(make_pair(nums[i],i));
         }
         mergesort(arr,0,nums.size()-1);
-        for(auto it : arr)cout<<it.first<<" "<<it.second<<endl;
+      //  for(auto it : arr)cout<<it.first<<" "<<it.second<<endl;
         
         return ans;
     }
