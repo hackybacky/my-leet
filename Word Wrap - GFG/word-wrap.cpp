@@ -9,14 +9,14 @@ using namespace std;
 
 class Solution {
 public:
-    int dp[501][501];
+    int dp[501];
     int n;
     int k;
     int recur(int i,int j,vector<int>&nums){
         if(i>=n){
             return 0;
         }
-        if(dp[i][j]!=-1)return dp[i][j];
+        if(dp[i]!=-1)return dp[i];
         int su=0;
         int ans=INT_MAX;
         for(int j=i; j<n;j++){
@@ -28,7 +28,7 @@ public:
             
             su++;
         }
-        return dp[i][j]=ans;
+        return dp[i]=ans;
     }
     int solveWordWrap(vector<int>nums, int K) 
     { 
