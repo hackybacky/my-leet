@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int>dis;
+   
     vector<vector<pair<int,char>>>graph;
     int ans;
     
@@ -27,7 +27,7 @@ public:
     }
     int longestPath(vector<int>& parent, string s) {
         int n = s.size();
-        dis.assign(n+10,0);
+        
         graph.resize(n+1,{});
         for(int i=1;i<parent.size();i++){
             graph[parent[i]].push_back({i,s[i]});
