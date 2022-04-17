@@ -18,7 +18,7 @@ public:
         auto newcur=new TreeNode();
         newcur->val=root->val;
         cur->right=newcur;
-        cur->left=nullptr;
+        
         cur=cur->right;
         ans(root->right);
         
