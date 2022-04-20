@@ -12,6 +12,8 @@ class Solution{
     for(int i=0;i<N;i++){
         int x=sqrt(w[i]);
         if(pow(x,2)==w[i])
+        
+                                                                                  
             continue;
         else{
             v.push_back({(double)p[i]/w[i],w[i]});
