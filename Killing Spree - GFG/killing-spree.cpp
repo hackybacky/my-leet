@@ -11,7 +11,7 @@ public:
         // Code Here
         
         
-        long long int l=0,r=1e6;
+        long long int l=0,r=1e5;
         while(l<=r){
             long long int mid =(l+r)/2;
             
