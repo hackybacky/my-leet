@@ -1,7 +1,7 @@
 class Solution {
 public:
-    int parent[1000000];
-   long long int size[1000000];
+    vector<int> parent;
+   vector<long long int >size;
      int get(int x) {
             if (parent[x] != x) parent[x] = get(parent[x]);
             return parent[x];
@@ -17,6 +17,8 @@ public:
      
         }
     string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) {
+        parent.assign(s.size(),0);
+        size.assign(s.size(),0);
         for(int i=0;i<s.size();i++)parent[i]=i,size[i]=i;
         for(auto it : pairs){
             unify(it[0],it[1]);
