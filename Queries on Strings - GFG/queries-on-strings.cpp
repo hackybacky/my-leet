@@ -19,49 +19,34 @@ static bool cmp(query p, query q) {
         return p.l/BLOCK_SIZE < q.l/BLOCK_SIZE;
     return (p.l / BLOCK_SIZE & 1) ? (p.r < q.r) : (p.r > q.r);
 }
-	vector<int>SolveQueris(string s, vector<vector<int>>Query){
+	vector<int>SolveQueris(string str, vector<vector<int>>Query){
 	    // Code here
 
-        vector<query>vq;
-        int i=0;
-        for(auto it : Query){
-            struct query q;
-            q.l=it[0]-1;
-            q.r=it[1]-1;
-            q.i=i++;
-            vq.push_back(q);
-        }
-        sort(vq.begin(),vq.end(),cmp);
-        map<char,int>mp;
-        vector<int>anss(Query.size());
-        int cur_r=-1,cur_l=-1;
-        for(auto q : vq){
-            //cout<<q.l<<" "<<q.r<<endl;
-            while (cur_l > q.l) {
-                  cur_l--;
-                  (mp[s[cur_l]])++;
-              }
-              while (cur_r < q.r) {
-                  cur_r++;
-                  mp[s[cur_r]]++;
-              }
-              while (cur_l < q.l) {
-                  if(mp[s[cur_l]])
-                  mp[s[cur_l]]--;
-                  cur_l++;
-              }
-              while (cur_r > q.r) {
-                  if(mp[s[cur_r]])
-                  mp[s[cur_r]]--;
-                  cur_r--;
-              }
-              int ans =0;
-              for(auto it:mp){
-                  if(it.second>0)ans++;
-              }
-              anss[q.i]=ans;
-        }
-        return anss;
+       int n = str.length();
+	    vector<vector<int>>dp(n , vector<int>(26 , 0));
+	    for(int i = 0 ; i < n ; i++){
+	        dp[i][str[i] - 'a']++;
+	    }
+	    for(int i = 1 ; i < n ; i++){
+	        for(int j = 0 ; j < 26 ; j++){
+	            dp[i][j] += dp[i - 1][j];
+	        }
+	    }
+	    vector<int>ans;
+	    for(auto it : Query){
+	        int distinct = 0;
+	        int l = it[0] , r = it[1];
+	        l-- , r--;
+	        for(int j = 0 ; j < 26 ; j++){
+	            int cnt = dp[r][j];
+	            if(l)
+	            cnt -= dp[l - 1][j];
+	            if(cnt)
+	            distinct++;
+	        }
+	        ans.push_back(distinct);
+	    }
+	    return ans;
 	    
 	}
 };
