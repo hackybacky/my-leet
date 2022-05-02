@@ -11,9 +11,10 @@ class Solution{
 public:
     int partyHouse(int N, vector<vector<int>> &adj){
         // code here
-        vector<int>dis(N+1,-1);
+        // vector<int>dis(N+1,-1);
       //  for(auto it :adj[1])cout<<it<<endl;
-        function<void(int,int)>dfs=[&](int node,int par){
+      int ldis=0;
+        function<void(int,int,int)>dfs=[&](int node,int par,int dis){
         //  cout<<"hello"<<endl;
         // cout<<node<<endl;
         //  if(node==0)cout<<"d"<<endl;
@@ -23,21 +24,21 @@ public:
                
               if(it!=par){
                   
-                  dis[it]=dis[node]+1;        
-                  dfs(it,node);
+                //   dis[it]=dis[node]+1; 
+                ldis=max(ldis,dis+1);
+                  dfs(it,node,dis+1);
               }
           }
         };
         int ans = INT_MAX;
-        dfs(1,-1);
+//dfs(1,-1);
         for(int i=1; i<=N; i++){
-            dis.assign(N+1,-1);
-            dis[i]=0;
-            dfs(i,-1);
+            ldis=0;
+            dfs(i,-1,0);
             // for(auto it:dis)cout<<it<<" ";
             // cout<<endl;
         //    cout<<(*(max_element(dis.begin(),dis.end())))<<endl;
-            ans=min(ans,*(max_element(dis.begin(),dis.end())));
+            ans=min(ans,ldis);
         }
         return ans;
     }
