@@ -24,7 +24,7 @@ public:
             k=n;
             while(k>=0 and nums[k]>=maxi)k--;
             end=k;
-            cout<<end<<" "<<start<<" "<<maxi<<" "<<mini<<endl;
+           // cout<<end<<" "<<start<<" "<<maxi<<" "<<mini<<endl;
             return end-start+1;
         }
         return 0;
