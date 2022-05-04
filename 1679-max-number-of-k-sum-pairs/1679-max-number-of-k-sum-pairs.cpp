@@ -8,7 +8,7 @@ public:
         for(auto curele : arr){
             int other_ele = k- curele;
             if(freq_hash[ other_ele ]>0 and freq_hash[curele]>0){
-                if(k-curele==curele and freq_hash[curele]<2)continue;
+                if( other_ele==curele and freq_hash[curele]<2)continue;
                 ans++;
                 freq_hash[curele]--;
                 freq_hash[ other_ele ]--;
