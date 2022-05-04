@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxOperations(vector<int>& arr, int k) {
-        map<int,int> freq_hash;
+        unordered_map<int,int> freq_hash;
         
         for(auto it : arr)freq_hash[it]++;
         int ans=0;
