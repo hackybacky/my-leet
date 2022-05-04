@@ -6,11 +6,12 @@ public:
         for(auto it : arr)freq_hash[it]++;
         int ans=0;
         for(auto curele : arr){
-            if(freq_hash[k-curele]>0 and freq_hash[curele]>0){
+            int other_ele = k- curele;
+            if(freq_hash[ other_ele ]>0 and freq_hash[curele]>0){
                 if(k-curele==curele and freq_hash[curele]<2)continue;
                 ans++;
                 freq_hash[curele]--;
-                freq_hash[k-curele]--;
+                freq_hash[ other_ele ]--;
             }
         }
         
