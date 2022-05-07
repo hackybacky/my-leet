@@ -87,10 +87,10 @@ Node* sortedMerge(Node* head1, Node* head2)
     if(head1==nullptr)return head2;
     else if( head2==nullptr)return head1;
     
-    Node *prev;
-    if(head1->data>head2->data)prev=head2,head2=head2->next;
-    else prev=head1,head1=head1->next;
+    Node *prev=new Node(-1);
+    
     Node *ans = prev;
+    
     while(head1 and head2){
         if(head1->data>head2->data){
             prev->next = head2;
@@ -107,6 +107,6 @@ Node* sortedMerge(Node* head1, Node* head2)
     if(head1)prev->next=head1;
     
     if(head2)prev->next=head2;
-    return ans;
+    return ans->next;
     // code here
 }  
