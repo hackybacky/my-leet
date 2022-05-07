@@ -103,18 +103,10 @@ Node* sortedMerge(Node* head1, Node* head2)
             head1=head1->next;
         }
     }
-    while(head1){
-      //  cout<<head1->data<<" "<<prev->data<<endl;
-        prev->next=head1;
-        prev=prev->next;
-        head1=head1->next;
-    }
-    while(head2){
-//cout<<"hello"<<endl;
-        prev->next=head2;
-        prev=prev->next;
-        head2=head2->next;
-    }
+    
+    if(head1)prev->next=head1;
+    
+    if(head2)prev->next=head2;
     return ans;
     // code here
 }  
