@@ -4,8 +4,8 @@ public:
         
         int l=0,r=s.size()-1;
         
-        while(l<=r){
-            //if(l+1==r and (isdigit(s[l]) or isdigit(s[r])) )return false;
+        while(l<r){
+           
             if(isalpha(s[l])==false and isdigit(s[l])==false){
                 l++;
                 continue;
@@ -15,11 +15,9 @@ public:
             }
             s[l]=tolower(s[l]);
             s[r]=tolower(s[r]);
-           // cout<<s[l]<<" "<<s[r]<<endl;
-            if(s[l]!=s[r]){
-                //cout<<s[l]<<" "<<s[r];
-                return false;
-            }
+           
+            if(s[l]!=s[r])return false;
+             
             l++,r--;
             
         }
