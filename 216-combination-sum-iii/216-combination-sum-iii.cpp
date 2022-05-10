@@ -1,20 +1,28 @@
 class Solution {
 public:
-    vector<vector<int>> combinationSum3(int k, int n) {
-        
-        vector<vector<int>>ans;
-        
-        for(int mask=1 ; mask<(1<<10) ; mask++){
-            int set = __builtin_popcount(mask);
-            if(set!=k)continue;
-            int su=0;
-            vector<int>cur;
-            for(int j=1; j<11; j++){
-                if(mask&(1<<j))su+=j,cur.push_back(j);
-            }
-            if(su==n and cur.size()==k)ans.push_back(cur);
+    vector<vector<int>>ans;
+    
+    void backtrack(vector<int>&visited,int cur_su , int k , int n ,int curindi ){
+        if(visited.size()==k){
+            if(cur_su==n)
+            ans.push_back(visited);
+            return ;
         }
-        
+        if(cur_su>n)return;
+        for(int i=curindi; i<=9; i++){
+            if(find(visited.begin(),visited.end(),i)==visited.end()){
+                visited.push_back(i);
+                cur_su+=i;
+                backtrack(visited,cur_su,k,n,i+1);
+                visited.pop_back();
+                cur_su-=i;
+            }
+        }
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<int>visited;
+        backtrack(visited,0,k,n,1);
         return ans;
+        
     }
 };
