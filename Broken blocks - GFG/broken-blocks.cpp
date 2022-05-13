@@ -20,15 +20,15 @@ int MaxGold(vector<vector<int>>&matrix){
             else {
                 if(matrix[i][j]==-1){dp[i][j]=-1;continue;}
                 int a = dp[i-1][j];
-                int b = (j-1>=0?dp[i-1][j-1]:0);
-                int c = (j+1<m ? dp[i-1][j+1]:0);
+                int b = (j-1>=0?dp[i-1][j-1]:-1);
+                int c = (j+1<m ? dp[i-1][j+1]:-1);
                 bool flag=false;
                 if(j-1>=0){
                     if(dp[i-1][j-1]!=-1)flag=true;
                 }
                 if(j+1<m and dp[i-1][j+1]!=-1)flag=true;
                 if(dp[i-1][j]!=-1){flag=true;}
-                if(flag==false){dp[i][j]=-1;continue;}
+                if(a==-1 and b==-1 and c==-1){dp[i][j]=-1;continue;}
                // cout<<"hello"<<endl;
                 dp[i][j]=matrix[i][j];
                 dp[i][j]+=max({a,b,c});
