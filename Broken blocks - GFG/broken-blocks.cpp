@@ -27,17 +27,12 @@ int MaxGold(vector<vector<int>>&matrix){
                
                 dp[i][j]=matrix[i][j];
                 dp[i][j]+=max({a,b,c});
-                
-                //cout<<dp[i][j]<<endl;
             }
-            //cout<<dp[i][j]<<endl;
+            
             ans=max(ans,dp[i][j]);
         }
     }
-    // int ans =INT_MIN;
-    // for(int i=0; i<m; i++){
-    //     ans = max(ans,dp[n-1][i]);
-    // }
+   
     return ans;
 }
 };
