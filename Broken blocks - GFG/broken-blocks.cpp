@@ -10,24 +10,25 @@ int MaxGold(vector<vector<int>>&matrix){
     int n = matrix.size();
     int m = matrix[0].size();
     
-    vector<vector<int>>dp(n,vector<int>(m,-1));
     int ans=0;
     for(int i=0 ; i<n ; i++ ){
         for(int j=0; j<m; j++){
-            if(i==0 ){
-                //dp[i][j]=matrix[i][j];
+            
+            if(i==0){
+                ans=max(ans,matrix[i][j]);
+                continue;
             }
-            else {
-                if(matrix[i][j]==-1){continue;}
-                int a = matrix[i-1][j];
-                int b = (j-1>=0?matrix[i-1][j-1]:-1);
-                int c = (j+1<m ? matrix[i-1][j+1]:-1);
-                
-                if(a==-1 and b==-1 and c==-1){matrix[i][j]=-1;continue;}
-               
-                // m[i][j]=matrix[i][j];
-                matrix[i][j]+=max({a,b,c});
-            }
+            if(matrix[i][j]==-1){continue;}
+            
+            int a = matrix[i-1][j];
+            int b = (j-1>=0?matrix[i-1][j-1]:-1);
+            int c = (j+1<m ? matrix[i-1][j+1]:-1);
+            
+            if(a==-1 and b==-1 and c==-1){matrix[i][j]=-1;continue;}
+           
+            
+            matrix[i][j]+=max({a,b,c});
+            
             
             ans=max(ans,matrix[i][j]);
         }
