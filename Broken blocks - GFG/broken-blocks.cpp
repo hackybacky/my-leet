@@ -15,21 +15,21 @@ int MaxGold(vector<vector<int>>&matrix){
     for(int i=0 ; i<n ; i++ ){
         for(int j=0; j<m; j++){
             if(i==0 ){
-                dp[i][j]=matrix[i][j];
+                //dp[i][j]=matrix[i][j];
             }
             else {
-                if(matrix[i][j]==-1){dp[i][j]=-1;continue;}
-                int a = dp[i-1][j];
-                int b = (j-1>=0?dp[i-1][j-1]:-1);
-                int c = (j+1<m ? dp[i-1][j+1]:-1);
+                if(matrix[i][j]==-1){continue;}
+                int a = matrix[i-1][j];
+                int b = (j-1>=0?matrix[i-1][j-1]:-1);
+                int c = (j+1<m ? matrix[i-1][j+1]:-1);
                 
-                if(a==-1 and b==-1 and c==-1){dp[i][j]=-1;continue;}
+                if(a==-1 and b==-1 and c==-1){matrix[i][j]=-1;continue;}
                
-                dp[i][j]=matrix[i][j];
-                dp[i][j]+=max({a,b,c});
+                // m[i][j]=matrix[i][j];
+                matrix[i][j]+=max({a,b,c});
             }
             
-            ans=max(ans,dp[i][j]);
+            ans=max(ans,matrix[i][j]);
         }
     }
    
