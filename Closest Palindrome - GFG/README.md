@@ -15,7 +15,7 @@ number.</span>
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
 <pre><span style="font-size:18px"><strong>Input: </strong>num = 489
-<strong>Output: </strong>494
+<strong>Output: </strong>484
 <strong>Expnataion: </strong>closest palindrome numbers from
 489 are 484 and 494. Absolute difference between
 489 and 494 is equal to the absolute difference
