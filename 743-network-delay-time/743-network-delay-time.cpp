@@ -25,7 +25,7 @@ public:
             }
         }
         auto it = *max_element(dis.begin()+1,dis.end());
-        for(auto it : dis)cout<<it<<" ";
+        
         return it==INT_MAX?-1:it;
     }
 };
