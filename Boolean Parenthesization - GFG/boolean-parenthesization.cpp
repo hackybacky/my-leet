@@ -20,8 +20,8 @@ public:
         }
         if(dp[i][j][t]!=-1)return dp[i][j][t];
         int ans=0;
-        for(int k=i+1;k<j;k+=2){
-            // if(s[k]!='T' or s[k]!='F'){
+        for(int k=i+1;k<j;k++){
+            if(s[k]!='T' and s[k]!='F'){
                 
                 int lt = recur(i,k-1,s,1);
                 int lf = recur(i,k-1,s,0);
@@ -41,7 +41,7 @@ public:
                     else ans=(ans+ lf*rf+lt*rt)%mod;
                 }
                 
-            // }
+            }
             
         }
         dp[i][j][t]=ans;
