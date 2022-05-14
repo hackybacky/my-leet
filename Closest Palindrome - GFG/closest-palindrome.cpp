@@ -1,77 +1,52 @@
 // { Driver Code Starts
-
 #include<bits/stdc++.h>
 using namespace std;
 
  // } Driver Code Ends
-
 class Solution {
 public:
-    #define ll long long
-    
-    //Given half palindrome, returns integer representing complete palindrome
-    ll returnPalindrome(int num, bool isOdd) {
-        string str = to_string(num);
-        int n = str.size(), i = n-1;
+    bool mul(long long num){
+        if(num==1)return true;
+        if(num%10==0)return mul(num/10);
+        return false;
+    }
+    int n;
+    long long cal(long long fir,bool odd ){
+        string sn = to_string(fir);
         
-        //if odd size, don't repeat the middle element
-        if(isOdd) 
-            i--;
-        
-        //complete palindrome
-        while(i >= 0) 
-            str += str[i--];
-        
-        //convert to int and return
-        ll ans = stoll(str);
-        return ans;
+        if(odd){
+            auto t =sn.substr(0,n/2);
+            reverse(t.begin(),t.end());
+            return stol(sn+t);
+        }
+        auto t = sn;
+        reverse(t.begin(),t.end());
+        return  stol(sn+t);
     }
     
-    //Checks for nums like 10, 100, 1000 ....
-    bool isMultiple10(int num) {
-        while(num and ((num % 10) == 0)) 
-            num /= 10;
-        return num == 1;
-    }
-
-	ll closestPalindrome(ll num){
-	    //Self Palindromes till 9
-	    if(num <= 9) 
-	        return num;
-    
-       //Check for numbers of the form 10..00
-       //These numbers have a closest palindrome with size less than there own size
-       //Bcoz for other numbers, from 10....0x where (x > 0), 10....01 will be a palindrome  
-       //so we will not have to decrease the size of palindrome in any other case
-	   if(isMultiple10(num)) 
-	    return (num - 1);
+	long long int closestPalindrome(long long int num){
+	    // Code here
 	    
-	    string str = to_string(num);
-	    string palin = "";
-	    int n = str.size();
-	    bool isOdd = n & 1 ? true : false;
-        
-        //Make a half palindrome	    
-        for(int i=0; i<n/2; i++) 
-            palin += str[i];
-        if(isOdd)
-            palin += str[n/2];
-        
-        //Check the following three possibilities
-        ll x = stoll(palin);
-                
-        ll ans = returnPalindrome(x, isOdd);
-        ll ans1 = returnPalindrome(x-1, isOdd);        
-        ll ans2 = returnPalindrome(x+1, isOdd);        
-        
-        //Compare the following three possibilities and return the optimal one
-        if(abs(ans - num) >= abs(ans1 - num)) 
-            ans = ans1;
-
-        if(abs(ans - num) > abs(ans2 - num))
-            ans = ans2;
-        
-        return ans;
+	    if(num<=9)return num;
+	    if(mul(num))return num-1;
+	    string sn = to_string(num);
+	    n = sn.size();
+	    string fir = sn.substr(0,n/2);
+	    bool odd=false;
+	    if(n&1){
+	        fir+=sn[n/2];
+	        odd=true;
+	    }
+	    
+	    
+	    long long ans =INT_MAX;
+	    long long fn = stol(fir);
+	    long long lans=num;
+	    for(int i=-1; i<=1; i++){
+	        long long cur = cal( fn+i ,odd );
+	        if(abs(num-cur)<ans)lans=cur,ans=abs(num-cur);
+	    }
+	    return lans;
 	}
 
 };
