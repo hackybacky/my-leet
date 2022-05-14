@@ -12,7 +12,7 @@ public:
     int dp[201][201][2];
     int mod = 1003;
     int recur(int i  ,int j ,string s , int t){
-        if(i>j)return 0;
+        // if(i>j)return 0;
         if(i==j){
             if(t)
             return s[i]=='T'?1:0;
@@ -21,7 +21,7 @@ public:
         if(dp[i][j][t]!=-1)return dp[i][j][t];
         int ans=0;
         for(int k=i+1;k<j;k++){
-            // if(s[k]!='T' and s[k]!='F'){
+             if(s[k]!='T' and s[k]!='F'){
                 
                 int lt = recur(i,k-1,s,1);
                 int lf = recur(i,k-1,s,0);
@@ -41,7 +41,7 @@ public:
                     else ans=(ans+ lf*rf+lt*rt)%mod;
                 }
                 
-            // }
+            }
             
         }
         dp[i][j][t]=ans;
