@@ -21,7 +21,7 @@ class Solution
             if(arr[mid]>arr[high]){l=mid+1;}
             else r=mid-1;
         }
-        return arr[l];
+        return arr[r+1];
         
     }
 };
