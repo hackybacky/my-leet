@@ -1,9 +1,10 @@
 class Solution {
 public:
-vector<int> x = {1, -1, 0, 0};
-vector<int> y = {0, 0, 1, -1};
+    vector<int> x = {1, -1, 0, 0};
+    vector<int> y = {0, 0, 1, -1};
     int n ,m;
     int dp[201][201];
+    
     int dfs(int i , int j , vector<vector<int>>&mat){
         if(dp[i][j]!=-1)return dp[i][j];
         int ans=0;
@@ -15,7 +16,6 @@ vector<int> y = {0, 0, 1, -1};
             if(mat[i][j]<mat[nx][ny]){
                 ans=max(ans,1+dfs(nx,ny,mat));
             }
-            // else dfs(nx,ny,mat);
             
         }
         return dp[i][j]=ans;
