@@ -13,11 +13,12 @@ class Solution {
 public:
     vector<TreeNode * > node;
     int h;
+    TreeNode *f;
     int depth(TreeNode *root){
         if(!root)return 0;
         
         int d =1+max(depth(root->right),depth(root->left));
-        if(d==h)node.push_back(root);
+        if(d==h and root->val==f->val)node.push_back(root);
         return d;
     }
     bool check(TreeNode * root, TreeNode * s){
@@ -27,6 +28,7 @@ public:
     }
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
         h= depth(subRoot);
+        f=subRoot;
         depth(root);
         for(auto it : node){
             if(check(it,subRoot))return true;
