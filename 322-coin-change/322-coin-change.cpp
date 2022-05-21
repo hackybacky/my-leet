@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[30000];
+    int dp[10001];
     int recur(vector<int>&coins, int rm ){
     
         if(rm ==0)return 0;
