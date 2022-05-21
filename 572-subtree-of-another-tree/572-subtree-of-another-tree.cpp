@@ -11,26 +11,26 @@
  */
 class Solution {
 public:
-    bool ans;
-    TreeNode * o;
-    map<pair<TreeNode *,TreeNode*> , bool > dp;
-    bool recur(TreeNode *root, TreeNode * s){
+    vector<TreeNode * > node;
+    int h;
+    int depth(TreeNode *root){
+        if(!root)return 0;
+        
+        int d =1+max(depth(root->right),depth(root->left));
+        if(d==h)node.push_back(root);
+        return d;
+    }
+    bool check(TreeNode * root, TreeNode * s){
         if(!s and !root)return true;
-        if(!s or !root)return false;
-        if(dp.find({root,s})!=dp.end())return dp[{root,s}];
-        bool ans;
-        if(s->val==root->val){
-            ans= (recur(root->left,s->left) and recur(root->right,s->right)) |
-                (recur(root->left,o)) | recur(root->right,o);
-                ;
-        }
-        else{
-            ans= recur(root->left , o) | recur(root->right,o);
-        }
-        return dp[{root,s}]=ans;
+        if(!s or !root or root->val !=s->val)return false;
+        return check(root->left,s->left) and check(root->right,s->right);
     }
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        o=subRoot;
-        return recur(root,subRoot);
+        h= depth(subRoot);
+        depth(root);
+        for(auto it : node){
+            if(check(it,subRoot))return true;
+        }
+        return false;
     }
 };
