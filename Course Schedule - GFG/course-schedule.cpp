@@ -26,7 +26,7 @@ class Solution
         }
         
         vector<int>ans;
-        int k=q.size();
+        int k=0;
         
         while(!q.empty()){
             int f = q.front();
@@ -35,12 +35,13 @@ class Solution
             for(auto it : graph[f]){
                 
                 indeg[it]--;
-                if(indeg[it]==0)q.push(it),k++;
+                if(indeg[it]==0)q.push(it);
                 
             }
-            // k++;
+            k++;
             
         }
+       // cout<<k<<endl;
         if(k==n)return ans;
         return {};
     }
