@@ -11,19 +11,20 @@
  */
 class Solution {
 public:
+    map<int,int>indi;
     TreeNode * recur( int p , int start , int end , vector<int>&pre , vector<int>&in ){
         
         if(start>end or p==pre.size()){
             return nullptr;
         }
         TreeNode * root = new TreeNode (pre[p]);
-        int ind;
-        for(int j=start ; j<=end; j++){
-            if(pre[p]==in[j]){
-                ind=j;
-                break;
-            }
-        }
+        int ind=indi[pre[p]];
+        // for(int j=start ; j<=end; j++){
+        //     if(pre[p]==in[j]){
+        //         ind=j;
+        //         break;
+        //     }
+        // }
         
         root->left= recur(p+1,start,ind-1,pre,in);
         root->right=recur(p+ind+1-start,ind+1,end,pre,in );
@@ -31,6 +32,7 @@ public:
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         
+        for(int i=0; i<inorder.size(); i++)indi[inorder[i]]=i;
         return recur(0,0,preorder.size(),preorder,inorder);
         
     }
