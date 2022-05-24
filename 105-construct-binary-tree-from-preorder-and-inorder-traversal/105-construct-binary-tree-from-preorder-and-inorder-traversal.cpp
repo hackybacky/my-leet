@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    map<int,int>indi;
+    unordered_map<int,int>indi;
     TreeNode * recur( int p , int start , int end , vector<int>&pre , vector<int>&in ){
         
         if(start>end or p==pre.size()){
