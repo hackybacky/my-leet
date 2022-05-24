@@ -9,46 +9,21 @@ using namespace std;
 
 class Solution{
     public:
-    int dp[200001];
-    bool recur(int cur, int n , int k , int m , vector<int>&a ){
-        
-        if(cur>=n){
-            return 1;
-        }
-        
-        if(dp[cur]!=-1)return dp[cur];
-        
-        int l = cur+k-1;
-        auto up = upper_bound(a.begin(),a.end(),a[cur]+m);
-        auto rup = prev(up);
-       
-        int r = rup - a.begin();
-        int ans=0;
-        int ll = l,rr=r;
-        while(l<=r){
-            int mid =(l+r)/2;
-            ans|=recur(mid+1,n,k,m,a);
-            if(ans==0)l=mid+1;
-            else break;
-        }
-        l=ll,r=rr;
-        while(l<=r){
-            int mid =(l+r)/2;
-            ans|=recur(mid+1,n,k,m,a);
-            if(ans==0)r=mid-1;
-            else break;
-        }
-    return dp[cur]  = ans;      
-        
-        
-    }
-    bool partitionArray(int N, int K, int M, vector<int> &a){
-        // code here
-        sort(a.begin(),a.end());
-        memset(dp,-1,sizeof(dp));
-        auto ans = recur(0,N,K,M,a);
-        return ans;
-    }
+     bool partitionArray(int N, int K, int M, vector<int> &A){
+       bool dp[N+1] = {0};
+       dp[0] = 1;
+       sort(A.begin(), A.end());
+       for(int i=K; i<=N; i++){
+           int l = lower_bound(A.begin(), A.end(), A[i-1] - M) - A.begin();
+           int h = i - K;
+           for(int j=l; j<=h; j++){
+               dp[i] |= dp[j];
+               if (dp[i])
+                   break;
+           }
+       }
+       return dp[N];
+   }
 };
 
 // { Driver Code Starts.
