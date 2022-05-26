@@ -10,25 +10,18 @@ class Solution {
   public:
     void reArrange(int a[], int N) {
         // code here
-        int e=0,o=1;
+        int e=1,o=0;
         
-        for(int i=0;i<N; i++){
+        while(e<N and o<N ){
             
-            if(i%2==0){
-                e=i;
-                while(e<N and a[e]%2!=0)e++;
-                swap(a[i],a[e]);
-            }
-            else{
-                o=i;
-                while(o<N and a[o]%2!=1)o++;
-                swap(a[i],a[o]);
-            }
-            // for(int i=0 ; i<N ; i++)cout<<a[i]<<" ";
-            // cout<<endl;
+            while(e<N and a[e]%2==1)e+=2;
+            while(o<N and a[o]%2==0)o+=2;
+            
+            if(e<N and o<N)swap(a[e],a[o]),e+=2,o+=2;
+        
         }
         
-        
+        // for(int i=0; i<N ;i++)cout<<a[i]<<" ";
         
     }
 };
