@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    map<TreeNode * , int > dp;
+    unordered_map<TreeNode * , int > dp;
     int ans=INT_MIN;
     int  recur( TreeNode * root ){
         if(!root)return 0;
