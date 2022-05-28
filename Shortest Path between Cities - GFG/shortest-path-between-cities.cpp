@@ -12,10 +12,10 @@ public:
     int recur( int x , int y , int a , int b ){
         
         if(x==y)return a+b;
-        if(x!=1 and x>y){
+        if( x>y){
             x/=2,a++;
         }
-        else if(y!=1 and y>x){
+        else if( y>x){
             y/=2,b++;
         }
         
