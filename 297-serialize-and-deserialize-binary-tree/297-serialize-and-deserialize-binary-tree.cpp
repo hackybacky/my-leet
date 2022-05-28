@@ -11,17 +11,7 @@ class Codec {
 public:
 
     // Encodes a tree to a single string.
-    void serial(TreeNode * root, string &s){
-        if(!root){s+="#,";return ;}
-        else{
-            
-            s.push_back(root->val+'0');
-            s.push_back(',');
-            (serial(root->left,s));
-            (serial(root->right,s));
-        }
-       
-    }
+    
     string serialize(TreeNode* root) {
         if (root == NULL) return "#";
         return to_string(root->val) + "," + serialize(root->left) + "," + serialize(root->right);
@@ -36,7 +26,9 @@ public:
     TreeNode * deserial(stringstream &data){
         
         string s;
+        
         getline(data,s,',');
+        
         if(s=="#"){
             return nullptr;
         }
