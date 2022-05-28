@@ -9,14 +9,14 @@ using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statisti
  
 class MedianFinder {
 public:
-    ordered_set<pair<double,double>>o;
+    ordered_set<pair<int,int>>o;
     int i;
     MedianFinder() {
         i=0;
     }
     
     void addNum(int num) {
-        o.insert({num*1.0,i++});
+        o.insert({num,i++});
     }
     
     double findMedian() {
