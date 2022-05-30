@@ -5,7 +5,7 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
 public:
-    int dp[200][200];
+    int dp[101][101];
     vector<int> x = {1, -1, 0, 0};
     vector<int> y = {0, 0, 1, -1};
     int n ,m;
@@ -23,6 +23,7 @@ public:
         }
         return dp[i][j]=ans;
     }
+    
     int longestIncreasingPath(vector<vector<int>>& matrix) {
         // Code here
         memset(dp,-1,sizeof(dp));
