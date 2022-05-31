@@ -5,7 +5,7 @@ public:
     vector<int> y = {0, 0, 1, -1};
     bool ans;
     vector<vector<char>> board;
-    bool backtrack(vector<vector<char>>&b ,int i , int j , int indi, string word){
+    bool backtrack(vector<vector<char>>&b ,int i , int j , int indi, string &word){
         
         
         if(indi==word.size())return true;
