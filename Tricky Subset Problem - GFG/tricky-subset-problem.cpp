@@ -24,7 +24,7 @@ public:
         if(su==x)return 1;
         if(su<x)return 0;
         i--;
-        while(x>=0 and i>=0 ){
+        while(x>0 and i>=0 ){
             if(x>=a[i])x-=a[i];
             if(x==0 or x-s==0)
             return 1;
