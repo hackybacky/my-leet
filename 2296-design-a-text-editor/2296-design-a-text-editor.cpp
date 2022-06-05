@@ -19,11 +19,7 @@ public:
         return ans;
     }
     
-    string cursorLeft(int k) {
-        for(int i=0;i<k and ba.empty()==false;i++){
-            front.push_front(ba.back());
-            ba.pop_back();
-        }
+    string shift_left(){
         int i=0;
         deque<char> v;
         string ans="";
@@ -40,25 +36,22 @@ public:
         return ans;
     }
     
+    string cursorLeft(int k) {
+        for(int i=0;i<k and ba.empty()==false;i++){
+            front.push_front(ba.back());
+            ba.pop_back();
+        }
+                    
+        return shift_left();
+    }
+    
     string cursorRight(int k) {
         for(int i=0;i<k and front.empty()==false;i++){
             ba.push_back(front.front());
             front.pop_front();
         }
-        int i=0;
-        deque<char> v;
-        string ans="";
-        while(!ba.empty() and i<10 ){
-            v.push_front(ba.back());
-            ba.pop_back();
-            i++;
-        }
-        while(!v.empty()){
-            ans+=v.front();
-            ba.push_back(v.front());
-            v.pop_front();
-        }
-        return ans;
+        
+        return shift_left();
     }
 };
 
