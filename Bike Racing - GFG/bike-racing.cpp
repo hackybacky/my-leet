@@ -12,7 +12,7 @@ public:
     long buzzTime(long N, long M, long L, long H[], long A[])
     {
         // code here
-        long long int l=0,r=1e8;
+        long long int l=0,r=1e12;
         long long ans=1e12;
         while(l<=r){
             long long int mid = l+(r-l)/2;
