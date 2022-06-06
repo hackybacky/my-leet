@@ -18,7 +18,7 @@ class Solution
         long long  ans=0;
         for(int i=0 ; i<n ; i++ ){
             
-            long long rem = A[i]%K;
+            int rem = A[i]%K;
             if(rem==0)ans+=mp[rem];
             ans+=mp[K-rem];
             
