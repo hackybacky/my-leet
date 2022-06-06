@@ -14,7 +14,7 @@ class Solution
     long long countKdivPairs(int A[], int n, int K)
     {
         //code here
-        map<long long  , long long > mp;
+        unordered_map<long long  , long long > mp;
         long long  ans=0;
         for(int i=0 ; i<n ; i++ ){
             
