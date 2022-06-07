@@ -93,7 +93,7 @@ class Solution{
         slowprev->next=NULL;
         
         LNode * ne = nullptr;
-         if(slow)ne=slow->next,
+        ne=slow->next,
         slow->next=NULL;
         
         root->left=recur(head);
