@@ -9,7 +9,7 @@ public:
         
         if(dp[su]!=-1)return dp[su];
         
-        cur+=nums[i];
+        // cur+=nums[i];
         su+=nums[i];
         int ans = recur(su,i+1,cur,nums);
         su-=nums[i];
@@ -18,6 +18,8 @@ public:
     }
     bool canPartition(vector<int>& nums) {
         memset(dp,-1,sizeof(dp));
-        return recur(0,0,0,nums);
+        int cur=0;
+        for(auto it : nums)cur+=it;
+        return recur(0,0,cur,nums);
     }
 };
