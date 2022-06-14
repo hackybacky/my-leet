@@ -1,26 +1,32 @@
 class Solution {
 public:
-    int dp[101][101];
+    int dp[101];
     
-    int recur(int i ,int j , string &s , string s2, string s3){
-        if(i==s.size()){
-            return s3.substr(i+j)==s2.substr(j);
-        }
-        if(j==s2.size()){
-             return s3.substr(i+j)==s.substr(i);
-        }
-        if(dp[i][j]!=-1)return dp[i][j];
-        int ans=false;
-        if(s[i]==s3[i+j]){
-            ans|=(recur(i+1,j,s,s2,s3));
-        }
-        if(s2[j]==s3[i+j]){
-            ans|=recur(i,j+1,s,s2,s3);
-        }
-        return dp[i][j]=ans;
-    }
+   
     bool isInterleave(string s1, string s2, string s3) {
-        memset(dp,-1,sizeof(dp));
-        return recur(0,0,s1,s2,s3);
+        if (s3.size() != s1.size() + s2.size()) {
+            return false;
+        }
+        memset(dp,0,sizeof(dp));
+        int n = s1.size();
+        int m = s2.size();
+        dp[0]=1;
+        for(int i=0;i<=n;i++){
+            for(int j=0;j<=m;j++){
+                if(i==0 and j==0)dp[j]=1;
+                else if(i==0 ){
+                    dp[j]=((s2[j-1]==s3[j-1+i]) and dp[j-1]);
+                }
+                else if(j==0 ){
+                    dp[j]=((s1[i-1]==s3[i-1+j]) and dp[j]);
+                
+                }
+                else{
+                    dp[j]=(dp[j-1] and s2[j-1]==s3[i+j-1])||(dp[j] and s1[i-1]==s3[i+j-1]);
+                }
+                
+            }
+        }
+        return dp[m];
     }
 };
