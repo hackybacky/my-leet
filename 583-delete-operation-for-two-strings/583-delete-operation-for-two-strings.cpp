@@ -1,24 +1,19 @@
 class Solution {
 public:
-    int dp[501][501];
-    int recur(int i , int j , string &word1,string &word2){
-        
-        if(i==word1.size() )return word2.size()-j;
-        if(j==word2.size())return word1.size()-i;
-            
-        if(dp[i][j]!=-1)return dp[i][j];
-        int ans=INT_MAX;
-        if(word1[i]==word2[j]){
-            ans=recur(i+1,j+1,word1,word2);
-        }
-        int ans2= 1+recur(i+1,j,word1,word2);
-        int ans3= 1+recur(i,j+1,word1,word2);
-        return dp[i][j]=min({ans,ans2,ans3});
-    }
+    
     int minDistance(string word1, string word2) {
-        
-        memset(dp,-1,sizeof(dp));
-        
-        return recur(0,0,word1,word2);
+        if(size(word1) < size(word2)) swap(word1, word2);
+        int dp[501][501];
+        memset(dp,INT_MAX,sizeof(dp));
+        int n = word1.size();
+        int m = word2.size();
+        for(int i=0;i<=n; i++){
+            for(int j=0;j<=m;j++){
+                if(i==0 or j==0)dp[i&1][j]=i+j;
+                else
+                dp[i & 1][j] = word1[i - 1] == word2[j - 1] ? dp[(i - 1) & 1][j - 1] : 1 + min(dp[(i - 1) & 1][j], dp[i & 1][j - 1]);
+            }
+                                                                                                              }
+        return dp[n&1][m];
     }
 };
