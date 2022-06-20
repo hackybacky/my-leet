@@ -11,7 +11,8 @@ public:
             int dis = it[1]-it[0];
             pq.push({-dis,it[1]});
         }
-        map<int,int>ans;
+        
+        unordered_map<int,int>ans;
         while(!pq.empty() and !s.empty()){
             auto t= pq.top();
             pq.pop();
