@@ -1,23 +1,17 @@
 class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {
-        int cur = 1;
-        int carry=0;
         int n = digits.size();
-        int i;
-        for( i=n-1;i>=0;i--){
-            
-            cur = digits[i]+1;
-            digits[i]=cur%10;
-            if(cur<10)break;
-            else cur=1;
-            
+        int i=n-1;
+        while(i>=0){
+            if(digits[i]==9)digits[i]=0;
+            else{
+                digits[i]++;
+                break;
+            }
+            i--;
         }
-        if(i==-1){
-            digits.push_back(1);
-            reverse(digits.begin(),prev(digits.end()));
-            reverse(digits.begin(),digits.end());
-        }
+        if(i==-1)digits[0]=1,digits.push_back(0);
         return digits;
     }
 };
