@@ -5,8 +5,7 @@ public:
     vector<int>vis;
     vector<int>tin,tout;
     int cnt;
-    
-   
+
     
     int dfs(int node,vector<int>&nums){
         vis[node]=1;
@@ -22,7 +21,7 @@ public:
         return dis[node];
     }
      bool isAncestor(int u, int v) {
-        return tin[u]<=tin[v]&&tout[v]<=tout[u];
+        return tin[u]<=tin[v]&&tout[v]<=tout[u]; // if u is ancestor of v;
     }
     
     
