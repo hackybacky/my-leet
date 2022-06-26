@@ -8,18 +8,18 @@ public:
     
    
     
-    void dfs(int node,vector<int>&nums){
+    int dfs(int node,vector<int>&nums){
         vis[node]=1;
         tin[node]=cnt++;
         dis[node]=nums[node];
         for(auto it : graph[node]){
             if(vis[it]==0){
-                dfs(it,nums);
-                dis[node]^=dis[it];
+                dis[node]^=dfs(it,nums);
+                
             }
         }
         tout[node]=cnt++;
-
+        return dis[node];
     }
      bool isAncestor(int u, int v) {
         return tin[u]<=tin[v]&&tout[v]<=tout[u];
@@ -64,7 +64,6 @@ public:
                 // cout << ans << endl;
             }
         }
-        cout<<isAncestor(0,1)<<endl;
        
         return ans;
         
