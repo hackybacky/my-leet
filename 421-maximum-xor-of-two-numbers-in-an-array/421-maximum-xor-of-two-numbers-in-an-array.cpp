@@ -34,8 +34,8 @@ class Trie{
         Node * node= root;
         int ans=0;
         for(int i=30;i>=0;i--){
-            int d =(1<<i)&n;
-            if(d)d=1;
+            int d =(n>>i)&1;
+            
             int cur = d^1;
            
             if( node->containsKey(cur)){
