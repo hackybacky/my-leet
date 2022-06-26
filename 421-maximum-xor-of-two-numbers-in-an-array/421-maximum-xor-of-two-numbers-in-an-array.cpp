@@ -17,9 +17,9 @@ class Trie{
      void insert(int n){
         Node * node=root;
         for(int i=30;i>=0;i--){
-            int d =(1<<i);
-            int cur = n&d;  
-            if(cur)cur=1;
+           
+            int cur = (n>>i)&1;  
+            
             // cout<<cur<<endl;
             if(node->containsKey(cur)==false){
                  // if(cur==1)cout<<"kj"<<endl;
