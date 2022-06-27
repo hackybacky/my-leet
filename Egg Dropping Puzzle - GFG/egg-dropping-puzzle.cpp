@@ -21,7 +21,7 @@ class Solution
             int left = recur(mid-1,e-1);
             int right = recur(f-mid,e);
             int cur = 1+max(left,right);
-            if(left<right){
+            if(left<=right){
                 l=mid+1;
             }
             else r=mid-1;
