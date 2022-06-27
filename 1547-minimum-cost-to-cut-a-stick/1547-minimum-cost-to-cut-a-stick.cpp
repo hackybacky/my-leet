@@ -9,7 +9,7 @@ public:
         int ans= INT_MAX;
         // cout<<end-start<<endl;
         for(int k=i;k<=j;k++){
-            if(cuts[k]>=start and cuts[k]<=end)
+           
             ans=min(ans,end-start+recur(k+1,j,cuts[k],end,cuts)+recur(i,k-1,start,cuts[k],cuts));
         }
         
