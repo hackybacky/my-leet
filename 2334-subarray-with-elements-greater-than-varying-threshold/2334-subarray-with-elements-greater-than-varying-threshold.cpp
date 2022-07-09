@@ -29,9 +29,9 @@ public:
             int r = ns[i];
             int len = r-l-1;
             // if(len<)
-            double cur_value = threshold*1.0/len*1.0;
+            double cur_value = threshold*1.0/a[i]*1.0;
             // cout<<len<<" "<<ns[i]<<" "<<ps[i]<<endl;
-            if(cur_value < (double) a[i]){
+            if(cur_value < (double)len){
                 return len;
             }
             
