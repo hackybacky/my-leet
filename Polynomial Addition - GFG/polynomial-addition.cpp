@@ -91,37 +91,31 @@ class Solution{
         //Your code here
         
         if(p1->pow<p2->pow)swap(p1,p2);
-        Node * root = new Node(0,0);
+        Node * root = p1;
         auto head = root;
+        
         while(p1 and p2){
-            root->next= new Node(0,0);
-            root=root->next;
+           
             if(p1->pow==p2->pow){
-                root->pow=p1->pow;
-                root->coeff = p1->coeff + p2->coeff;
+                p1->coeff += p2->coeff;
+                head=p1;
                 p1=p1->next;
                 p2=p2->next;
             }
             else if(p1->pow>p2->pow){
-                root->pow = p1->pow;
-                root->coeff=p1->coeff;
+                head=p1;
                 p1=p1->next;
             }
             else{
-                root->pow = p2->pow;
-                root->coeff=p2->coeff;
+                head->next=p2;
+                head=head->next;
                 p2=p2->next;
             }
+           
         }
-        if(p2)swap(p1,p2);
-        while(p1){
-            root->next=new Node(0,0);
-            root=root->next;
-            root->pow=p1->pow;
-            root->coeff=p1->coeff;
-            p1=p1->next;
-        }
-        return head->next;
+        if(p2)head->next=p2;
+       
+        return root;;
     }
 };
 
