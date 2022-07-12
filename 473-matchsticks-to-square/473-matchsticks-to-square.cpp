@@ -26,7 +26,7 @@ public:
         int parameter=0;
         
         for(auto it : matchsticks)parameter+=it;
-        
+        sort(matchsticks.begin(),matchsticks.end());
         if(parameter%4!=0)return 0;
         n = matchsticks.size();
         // cout<<"d";
