@@ -4,6 +4,7 @@ public:
     int side;
     int n;
     int recur(int i ,int mask , vector<int>&matchsticks,int cur_sum, int d){
+        if(cur_sum>side)return 0;
         if(i==n){
             if(cur_sum==side){
                 
