@@ -11,26 +11,24 @@
  */
 class BSTIterator {
 public:
-    stack <TreeNode *> st;
-    TreeNode *cur;
+    stack<TreeNode * > st;
+    TreeNode * cur;
     BSTIterator(TreeNode* root) {
         travel(root);
     }
     
     int next() {
-        
-        auto t = st.top();
+        auto top = st.top();
         st.pop();
-        travel(t->right);
-        return t->val;
-        
+        travel(top->right);
+        return top->val;
     }
     
     bool hasNext() {
         return !st.empty();
     }
-    void travel(TreeNode *curr){
-        for(;curr ;curr=curr->left)st.push(curr);
+    void travel(TreeNode*root){
+        while(root)st.push(root),root=root->left;
     }
 };
 
