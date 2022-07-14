@@ -19,7 +19,7 @@ public:
                 else cnt++;
             }
             ans+=to_string(cnt)+(last);
-            cout<<lans<<endl;
+            // cout<<lans<<endl;
             lans = ans;
         }
         return lans;
