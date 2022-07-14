@@ -25,9 +25,9 @@ public:
         //         break;
         //     }
         // }
-        
+         root->right=recur(p+ind+1-start,ind+1,end,pre,in );
         root->left= recur(p+1,start,ind-1,pre,in);
-        root->right=recur(p+ind+1-start,ind+1,end,pre,in );
+       
         return root;
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
