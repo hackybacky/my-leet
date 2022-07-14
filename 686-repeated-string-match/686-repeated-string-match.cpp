@@ -11,7 +11,7 @@ public:
             j++;
         pi[i] = j;
     }   
-        for(auto it : pi)cout<<it<<" ";
+        // for(auto it : pi)cout<<it<<" ";
         return find(pi.begin(),pi.end(),lena)!=pi.end();
     }
     int repeatedStringMatch(string a, string b) {
@@ -30,7 +30,7 @@ public:
         if(ans==b or prefix_function(b+"#"+ans,lenb) )return cnt;
         else {
             string d = ans+a;
-            cout<<d<<endl;
+            // cout<<d<<endl;
             if(prefix_function(b+"#"+d,lenb))return cnt+1;
         }
         return -1;
