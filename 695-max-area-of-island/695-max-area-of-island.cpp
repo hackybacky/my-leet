@@ -27,7 +27,7 @@ vector<int> y = {0, 0, 1, -1};
                     ans=0;
                     dfs(i,j,grid);
                     lans = max(ans,lans);
-                    cout<<ans<<endl;
+                    // cout<<ans<<endl;
                 }
             }
         }
