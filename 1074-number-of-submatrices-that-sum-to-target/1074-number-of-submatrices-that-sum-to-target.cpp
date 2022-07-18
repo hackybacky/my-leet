@@ -16,7 +16,7 @@ public:
         for(int i=0;i<m; i++){
             for(int j=i;j<m;j++ ){
                 int su=0;
-                unordered_map<int,int>mp;
+                map<int,int>mp;
                 mp[0]=1;
                 for(int k=0;k<n ;k++){
                     su+=dp[k][j]-(i-1>=0?dp[k][i-1]:0);
