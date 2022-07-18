@@ -11,11 +11,11 @@ public:
         for(int j=0;j<nums.size();j++){
             string it=nums[j];
             int sz = it.size();
-            string t=it;
-            for(int i=0;i<sz ; i++){
-                 mp[sz-i].push_back({t,j});
-                t.erase(t.begin());
+            string t="";
+            for(int i=sz-1;i>=0 ; i--){
+                t=it[i]+t;
                 
+                 mp[sz-i].push_back({t,j});
             }
         }
         
