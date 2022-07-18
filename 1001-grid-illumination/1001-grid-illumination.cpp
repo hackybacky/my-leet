@@ -10,7 +10,7 @@ public:
         {
             int x=lamp[0];
             int y=lamp[1];
-             if (s.insert({ x, y }).second) 
+             if (s.find({x,y}) ==s.end())
             row[x]++,
             col[y]++,
             diag[x+y]++,
