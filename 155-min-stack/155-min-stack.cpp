@@ -19,7 +19,6 @@ public:
     }
     
     void push(int v) {
-        cout<<min(head->val,v)<<" "<<head->val<<endl;
         head = new Node(v,min(head->mn,v),head);
         
         
