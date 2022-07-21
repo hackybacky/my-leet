@@ -1,19 +1,21 @@
 class Solution {
 public:
-    
+    static bool cmp(pair<string,int>a,pair<string,int>b){
+        return a.first<b.first or (a.first==b.first and a.second<b.second);
+    }
     vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {
         
-        unordered_map<int,vector<pair<string,int>>>mp;
+        map<int,vector<pair<string,int>>>mp;
         
-        unordered_map<string,int>indi;
+        map<string,int>indi;
         for(int j=0;j<nums.size();j++){
             string it=nums[j];
             int sz = it.size();
-            string t="";
-            for(int i=sz-1;i>=0 ; i--){
-                t=it[i]+t;
-                
+            string t=it;
+            for(int i=0;i<sz ; i++){
                  mp[sz-i].push_back({t,j});
+                t.erase(t.begin());
+                
             }
         }
         
