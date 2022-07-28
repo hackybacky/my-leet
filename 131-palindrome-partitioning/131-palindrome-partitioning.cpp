@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<string>>lans;
-    void recur(int i , string &s , vector<string>ans ){
+    void recur(int i , string &s , vector<string>&ans ){
         if(i==s.size()){
             lans.push_back(ans);
             return ;
