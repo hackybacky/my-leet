@@ -15,7 +15,7 @@ public:
             reverse(rev.begin(),rev.end());
             
             if(rev==cur){
-                cout<<cur<<j<<endl;
+                // cout<<cur<<j<<endl;
                 ans.push_back(cur);
                 recur(j+1,s,ans);
                 ans.pop_back();
