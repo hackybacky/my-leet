@@ -20,8 +20,8 @@ public:
             num.erase(std::remove(num.begin(), num.end(), num[t]), num.end());
             if(num.size()==0)break;
             k=k%fact;
-            fact/=num.size();
-            // cur--;
+            fact/=cur;
+            cur--;
         }
         return ans;
     }
