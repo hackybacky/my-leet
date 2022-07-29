@@ -1,23 +1,29 @@
 class Solution {
 public:
     vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
-        vector<string>ans;
-        for(auto it : words){
-            string cur = it;
-            
-            unordered_map<char,char>mp;
-            unordered_map<char,char>r;
-            for(int i=0  ; i< pattern.size()  ;i++ ){
-                if(mp.find(pattern[i])!=mp.end() or r.find(cur[i])!=r.end()){
-                    if(mp[pattern[i]]!=cur[i] or r[cur[i]]!=pattern[i]){
-                        goto next;
-                    }
-                }
-                else mp[pattern[i]]=cur[i],r[cur[i]]=pattern[i];
+         int n=words.size();
+        vector<map<char,char>> m(n);
+        
+        for(int i =0 ; i<n; ++i){
+          set<int>s ;
+            for(int j=0;j<words[i].size();++j){
+              if(s.find(pattern[j])==s.end()){
+                  s.insert(pattern[j]);
+                m[i][words[i][j]]=pattern[j];
             }
-            ans.push_back(cur);
-            next:;
+        }
+        }
+        vector<string> ans;
+        for(int i=0;i<n;++i){
+            string k=words[i];
+            for(int j=0; j<words[i].size();++j){
+                  words[i][j]=m[i][words[i][j]];
+            }
+            if(words[i]==pattern){
+                ans.push_back(k);
+            }
         }
         return ans;
+         
     }
 };
