@@ -106,7 +106,7 @@ segtree<int> s;
     }
     
     int sumRange(int left, int right) {
-        cout<<s.query(0,0)<<endl;
+        // cout<<s.query(0,0)<<endl;
         return s.query(left,right);        
     }
 };
