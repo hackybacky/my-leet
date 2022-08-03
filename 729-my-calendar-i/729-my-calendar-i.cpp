@@ -17,7 +17,7 @@ public:
             auto p = prev(it);
             int pr = (*p).first;
             if(start<pr){
-                cout<<"s"<<endl;
+                
                 return false;
             }
         }
@@ -25,7 +25,7 @@ public:
         if(it!=mp.end()){
             auto n = it;
             if(n!=mp.end()){
-                cout<<"hello"<<endl;
+                // cout<<"hello"<<endl;
                 int st = (*n).second;
                 if(st<end){cout<<"f"<<endl;return false;}
             }
