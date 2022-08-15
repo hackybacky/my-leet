@@ -10,25 +10,25 @@
 class Solution {
 public:
     TreeNode * lca;
-    TreeNode * give_me_lca(TreeNode * root , TreeNode *p , TreeNode *q){
+    bool give_me_lca(TreeNode * root , TreeNode *p , TreeNode *q){
         if(!root){
-            return root;
+            return false;
         }
-        if(root==p or root==q)return root;
+        if(root==p or root==q){lca=root;return true;}
         auto flag = give_me_lca(root->left , p , q);
         auto flag2= give_me_lca(root->right,p,q);
         
         if(flag and flag2){
-            // lca=root;
+            lca=root;
             return root;
         }
         
-        return flag?flag:flag2;
+        return flag or flag2;
         
     }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         
-        return give_me_lca(root,p,q);
+        give_me_lca(root,p,q);
 //         if(root==NULL or root==p or root==q)return root;
         
 //         auto t = lowestCommonAncestor(root->left,p,q);
