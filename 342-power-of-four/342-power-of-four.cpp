@@ -3,9 +3,9 @@ public:
     bool isPowerOfFour(int n) {
         if(n<=0)return 0;
         if(n==1)return 1;
-        int set = __builtin_popcount(n);
+        // int set = __builtin_popcount(n);
         
-        if(set>1)return 0;
+        if(n&(n-1))return 0;
         
         if(n==2)return false;
         
