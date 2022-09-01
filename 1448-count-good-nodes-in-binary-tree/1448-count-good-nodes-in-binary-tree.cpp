@@ -11,16 +11,7 @@
  */
 class Solution {
 public:
-    int recur(TreeNode * root , int maxi ){
-        if(!root)return 0;
-        int cur =0;
-        if(maxi<=root->val)cur++;
-        
-        cur += recur(root->left , max(maxi,root->val)) + recur(root->right , max(maxi,root->val));
-        
-        return cur;
-        
-    }
+    
     int goodNodes(TreeNode* root , int maxi=INT_MIN) {
         
         if(!root)return 0;
