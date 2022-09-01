@@ -21,9 +21,15 @@ public:
         return cur;
         
     }
-    int goodNodes(TreeNode* root) {
+    int goodNodes(TreeNode* root , int maxi=INT_MIN) {
         
+        if(!root)return 0;
+        int cur =0;
+        if(maxi<=root->val)cur++;
         
-        return recur(root , INT_MIN);
+        cur += goodNodes(root->left , max(maxi,root->val)) + goodNodes(root->right , max(maxi,root->val));
+        
+        return cur;
+        
     }
 };
