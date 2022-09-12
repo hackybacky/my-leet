@@ -13,7 +13,7 @@ public:
                 if( token > 0 and left < right ) 
                     power += tokens[right--] , token--;
                 else break;
-                cout << power << endl;
+                // cout << power << endl;
             }
                 
         }
