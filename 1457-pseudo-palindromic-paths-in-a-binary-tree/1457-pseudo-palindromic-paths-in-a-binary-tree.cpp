@@ -12,24 +12,24 @@
 class Solution {
 public:
     int ans = 0;
-    void give_ans(TreeNode * root , unordered_set<int>s){
+    void give_ans(TreeNode * root , int mask){
         if(!root)return;
-        auto it = s.find(root -> val);
-        if( it != s.end())
-            s.erase( it );
-        else s.insert(root -> val);
+        int val = root -> val;
+        mask ^= (1 << val);
         if(root and !(root ->left) and !(root -> right)){
-            if(s.size() <= 1)ans++;
+            int bit = __builtin_popcount(mask);
+            if( bit <= 1)ans++;
             // cout << cnt;
             return;
         }
-        give_ans(root -> left , s);
-        give_ans(root -> right , s);
+        give_ans(root -> left , mask);
+        give_ans(root -> right , mask);
         // return ans;
     }
     int pseudoPalindromicPaths (TreeNode* root) {
-        unordered_set<int > mp;
-         give_ans(root , mp);
+        // unordered_set<int > mp;
+        
+         give_ans(root , 0);
         return ans;
     }
 };
