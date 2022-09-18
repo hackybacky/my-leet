@@ -22,7 +22,7 @@ public:
             long long int p = 29;
             int c = 0;
             for(int i = 0 ; i < it.size() ; i++){
-                hash = (hash + (long long)(it[i] - 'a' + 1)*po) % m;
+                hash = (hash + (it[i] - 'a' + 1)*po) % m;
                 po = (po * p) % m;
                 
                 
