@@ -51,13 +51,14 @@ public:
                       // cout << (set ^ 1) << " " << num <<" "<<set<<endl;
                       if( tmp -> contains(1 ^ set) and tmp ->getCount(1 ^ set) > 0 ){
                           tmp = tmp -> getNext(1 ^ set);
+                          result |= (1 << i);
                       }
                       else if(tmp -> contains(set)){
                           tmp = tmp -> getNext(set);
                       }
                   }
                   
-                  return (tmp -> val) ^ num;
+                  return result;
               }
     };
     
