@@ -49,8 +49,8 @@ public:
                   for(int i = 18 ; i >=0 ; i--){
                       int set = (bool)(num & (1<<i));
                       // cout << (set ^ 1) << " " << num <<" "<<set<<endl;
-                      if( tmp -> contains(1 - set) and tmp ->getCount(1 - set) > 0 ){
-                          tmp = tmp -> getNext(1 - set);
+                      if( tmp -> contains(1 ^ set) and tmp ->getCount(1 ^ set) > 0 ){
+                          tmp = tmp -> getNext(1 ^ set);
                       }
                       else if(tmp -> contains(set)){
                           tmp = tmp -> getNext(set);
