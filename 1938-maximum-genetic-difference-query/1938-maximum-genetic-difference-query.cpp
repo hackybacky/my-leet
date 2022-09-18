@@ -15,11 +15,11 @@ public:
             return links[bit];
         }
         void increaseCount(int set , int d){
-            links[set]->cnt += d;
+            cnt += d;
             
         }
         int getCount(int bit){
-            return links[bit] -> cnt;
+            return cnt;
         }
         
     };
@@ -37,8 +37,8 @@ public:
                       if(tmp -> contains(set) == false){
                           tmp -> put(set);
                       }
-                      tmp -> increaseCount(set ,d );
                       tmp = tmp -> getNext(set);
+                      tmp -> increaseCount(set ,d );
                   }
                   tmp -> val = num;
                   
@@ -50,7 +50,7 @@ public:
                       int d = ((1<<i));
                       int set = (bool)(num & d);
                       // cout << (set ^ 1) << " " << num <<" "<<set<<endl;
-                      if( tmp -> contains(1 ^ set) and tmp ->getCount(1 ^ set) > 0 ){
+                      if( tmp -> contains(1 ^ set) and (tmp ->getNext(1 ^ set))->getCount(1 ^ set) > 0 ){
                           tmp = tmp -> getNext(1 ^ set);
                           result |= (d);
                       }
