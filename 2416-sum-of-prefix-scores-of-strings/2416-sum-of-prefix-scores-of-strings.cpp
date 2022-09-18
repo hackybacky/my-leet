@@ -19,7 +19,7 @@ public:
 };
     vector<int> sumPrefixScores(vector<string>& words) {
         unordered_map<long long int , int > mp;
-        long long m = 1e12 + 7;
+        long long m = 1e14 + 7;
         for(auto it : words){
             long long int hash = 0;
             long long int po = 1;
