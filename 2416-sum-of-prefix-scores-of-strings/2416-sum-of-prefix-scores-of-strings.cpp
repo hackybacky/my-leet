@@ -8,7 +8,7 @@ public:
             long long int key = 0;
             
             for(int i = 0 ; i < it.size() ; i++){
-                key = ((key << 5) ^ (it[i] - 'a' + 1))%mod;
+                key = ((key << 7 ) ^ (it[i] - 'a' + 1))%mod;
                  
                 mp[ key ]++;
             }
@@ -20,7 +20,7 @@ public:
             int c = 0;
             for(int i = 0 ; i < it.size() ; i++){
                 // hash = (hash + (it[i] - 'a' + 1)*po) % m;
-                key = ((key << 5) ^ (it[i] - 'a' + 1))%mod;
+                key = ((key << 7 ) ^ (it[i] - 'a' + 1))%mod;
             
                 
                 
