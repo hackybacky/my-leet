@@ -7,7 +7,7 @@ public:
         for(auto it : words){
             long long int hash = 0;
             long long int po = 1;
-            long long p = 37;
+            long long p = 29;
             for(int i = 0 ; i < it.size() ; i++){
                 hash = (hash + (it[i] - 'a' + 1)*po) % m;
                 po = (po * p) % m;
@@ -19,7 +19,7 @@ public:
         for(auto it : words){
             long long int hash = 0;
             long long int po = 1;
-            long long int p = 37;
+            long long int p = 29;
             int c = 0;
             for(int i = 0 ; i < it.size() ; i++){
                 hash = (hash + (long long)(it[i] - 'a' + 1)*po) % m;
