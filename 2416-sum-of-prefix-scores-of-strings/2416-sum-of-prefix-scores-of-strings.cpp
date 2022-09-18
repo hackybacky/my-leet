@@ -1,52 +1,34 @@
 class Solution {
 public:
-    struct Node{
-        Node * links[26];
-        bool containsKey(char c ){
-            return links[c - 'a'] != NULL;
-        }
-        
-        int cnt = 0;
-        void increaseCnt(){
-            cnt++;
-        }
-        
-    };
-    class Trie{
-        public:
-        Node * root;
-            Trie(){
-                root = new Node();
-            }
-        void insert(string & word){
-            Node * node = root;
-            for(auto it : word){
-                if(node->containsKey(it) == false){
-                    node -> links[it - 'a'] = new Node();
-                }
-                node = node -> links[it - 'a'];
-                node -> increaseCnt();
-            }
-        }
-        int search(string & word){
-            Node * node = root;
-            int ans = 0;
-            for(auto it : word){
-                node = node -> links[it - 'a'];
-                ans += node -> cnt;
-            }
-            return ans;
-        }
-    };
+    
     vector<int> sumPrefixScores(vector<string>& words) {
-        Trie trie;
+        unordered_map<long long int , int > mp;
+        long long mod = 1e14 + 7;
         for(auto it : words){
-            trie.insert(it);
-            
+            long long int key = 0;
+            long long int po = 1;
+            long long p = 29;
+            for(int i = 0 ; i < it.size() ; i++){
+                key = (((key<<5) + key) ^ (it[i] - 'a' + 1))%mod;
+                 
+                mp[ key ]++;
+            }
         }
         vector<int>ans;
         for(auto it : words){
-            ans.push_back(trie.search(it));
+            long long int key = 0;
+            long long int po = 1;
+            long long int p = 29;
+            int c = 0;
+            for(int i = 0 ; i < it.size() ; i++){
+                // hash = (hash + (it[i] - 'a' + 1)*po) % m;
+                key = (((key<<5) + key) ^ (it[i] - 'a' + 1))%mod;
+            
+                
+                
+                c += mp[key];
+            }
+            ans.push_back(c);
         }
         return ans;
     }
