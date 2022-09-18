@@ -47,11 +47,12 @@ public:
                   Node * tmp = root;
                   int result = 0;
                   for(int i = 18 ; i >=0 ; i--){
-                      int set = (bool)(num & (1<<i));
+                      int d = ((1<<i));
+                      int set = (bool)(num & d);
                       // cout << (set ^ 1) << " " << num <<" "<<set<<endl;
                       if( tmp -> contains(1 ^ set) and tmp ->getCount(1 ^ set) > 0 ){
                           tmp = tmp -> getNext(1 ^ set);
-                          result |= (1 << i);
+                          result |= (d);
                       }
                       else if(tmp -> contains(set)){
                           tmp = tmp -> getNext(set);
