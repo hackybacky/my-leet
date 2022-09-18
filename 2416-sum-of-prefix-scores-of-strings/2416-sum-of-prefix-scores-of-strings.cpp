@@ -3,7 +3,7 @@ public:
     
     vector<int> sumPrefixScores(vector<string>& words) {
         unordered_map<long long int , int > mp;
-        long long mod = 1e14 + 7;
+        long long mod = 1e15 + 7;
         for(auto it : words){
             long long int key = 0;
             
