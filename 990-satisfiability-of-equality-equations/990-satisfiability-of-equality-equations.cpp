@@ -17,7 +17,7 @@ public:
             if (x == y) return;
              //remove size line for directed graph or tree means next two lines 
             if (size[x] < size[y]) swap(x, y);
-                size[x]+=size[y];
+            size[x]+=size[y];
             parent[y] = x;
 
         }
@@ -26,21 +26,16 @@ public:
         
         int n = equations.size();
         DSU<26> dsu;
-        vector<string>eq , neq;
+        
         for(auto it : equations){
-            if(it[1] == '!')
-                neq.push_back(it);
-            else 
-                eq.push_back(it);
-        }
-        for(auto it : neq)
-            eq.push_back(it);
-        for(auto it : eq){
             int a = (it[0] - 'a') , b = (it[3]-'a');
             if(it[1] == '='){
                 dsu.unify(a , b);
             }
-            else{
+        }
+        for(auto it : equations){
+            int a = (it[0] - 'a') , b = (it[3]-'a');
+            if(it[1] == '!'){
                 int pa = dsu.get(a) , pb = dsu.get(b);
                 if(pa == pb){
                     return false;
