@@ -1,41 +1,47 @@
 class Solution {
 public:
-    int parent[26],size[26];
-    
-    int find(int v ){
-        if(parent[v] == v)
-            return v;
-        return parent[v] = find(parent[v]);
-    }
-    void unify(int x, int y) {
-        x = find(x); y = find(y);
-        if (x == y) return;
-         //remove size line for directed graph or tree means next two lines 
-        if (size[x] < size[y]) swap(x, y);
-        size[x]+=size[y];
-        parent[y] = x;
- 
-    }
+    template<int SZ> struct DSU {
+        int parent[SZ], size[SZ];
+        int i;
+        DSU() {
+            for(int i=0; i< SZ; i++) parent[i] = i, size[i] = 1;
+        }
+
+        int get(int x) {
+            if (parent[x] != x) parent[x] = get(parent[x]);
+            return parent[x];
+        }
+
+        void unify(int x, int y) {
+            x = get(x); y = get(y);
+            if (x == y) return;
+             //remove size line for directed graph or tree means next two lines 
+            if (size[x] < size[y]) swap(x, y);
+                size[x]+=size[y];
+            parent[y] = x;
+
+        }
+    };
     bool equationsPossible(vector<string>& equations) {
         
         int n = equations.size();
-        for(int i = 0 ; i < 26 ; i++)
-            parent[i] = i , size[i] = 1;
+        DSU<26> dsu;
         vector<string>eq , neq;
         for(auto it : equations){
             if(it[1] == '!')
                 neq.push_back(it);
-            else eq.push_back(it);
+            else 
+                eq.push_back(it);
         }
         for(auto it : neq)
             eq.push_back(it);
         for(auto it : eq){
             int a = (it[0] - 'a') , b = (it[3]-'a');
             if(it[1] == '='){
-                unify(a , b);
+                dsu.unify(a , b);
             }
             else{
-                int pa = find(a) , pb = find(b);
+                int pa = dsu.get(a) , pb = dsu.get(b);
                 if(pa == pb){
                     return false;
                 }
