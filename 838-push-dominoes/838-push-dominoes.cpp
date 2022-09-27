@@ -40,7 +40,7 @@ public:
             // cout << dominoes << endl;
         }
         if(r != -1){
-            cout << r  << endl;
+            // cout << r  << endl;
             for(int j = r; j < n ;j++)
                 dominoes[j] = 'R';
         }
