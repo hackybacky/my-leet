@@ -9,14 +9,12 @@ public:
         
         for(int i = 1 ; i <= n ; i++){
             for(int j = 0 ; j <= target ; j++){
-                if(j == 0 and i==0)
-                    dp[i][j] = 1;
-                else{
-                    for(int l = 1 ; l <= k ; l++){
-                        if(j - l >=0 )
-                        dp[i][j] = (dp[i][j] + dp[i - 1][j - l])%mod;
-                    }
+                
+                for(int l = 1 ; l <= k ; l++){
+                    if(j - l >=0 )
+                    dp[i][j] = (dp[i][j] + dp[i - 1][j - l])%mod;
                 }
+                
             }
         }
         return dp[n][target];
