@@ -16,12 +16,13 @@ public:
         if(rear == -1 and front == -1){
             rear = front = 0;
             my_queue[rear] = value;
+            return true;
         }
-        else if((rear + 1) % k != front){
+        // else if((rear + 1) % k != front){
         
             rear = (rear + 1)%k;
             my_queue[rear] = value;
-        }
+        
         return true;
         
     }
