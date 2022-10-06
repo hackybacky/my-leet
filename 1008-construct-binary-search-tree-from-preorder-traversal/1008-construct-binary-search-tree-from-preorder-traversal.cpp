@@ -11,19 +11,21 @@
  */
 class Solution {
 public:
-    TreeNode * give_my_tree(vector<int>&a , int left , int right){
-        if(left>right)return NULL;
-        
-        TreeNode * root = new TreeNode(a[left]);
-        int cur=left+1;
-        while(cur<=right and a[cur]<a[left])cur++;
-        
-        root->left = give_my_tree(a , left+1 , cur-1);
-        root->right = give_my_tree(a, cur, right);
+    TreeNode * construct(int left , int right , vector<int>&pre ){
+        if(left > right){
+            return NULL;
+            
+        }
+        TreeNode * root = new TreeNode(pre[left]);
+        int cur = left + 1;
+        while(cur <= right and pre[cur] < pre[left])
+            cur++;
+        root -> left = construct(left + 1 , cur - 1 , pre);
+        root -> right = construct(cur , right , pre);
         return root;
     }
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-        int left=0,right=preorder.size()-1;
-        return give_my_tree(preorder,left , right);
+        
+        return construct(0 , preorder.size() - 1, preorder);
     }
 };
