@@ -29,8 +29,8 @@ public:
                 string rv = palindrome;
                 reverse(rv.begin() , rv.end());
                 if(rv == palindrome){
-                    c++;
                     palindrome[i] = prev;
+                   break;
                 }
                 else{
                     found = true;
