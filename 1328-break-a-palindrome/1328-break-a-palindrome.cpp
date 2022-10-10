@@ -2,24 +2,13 @@ class Solution {
 public:
     string breakPalindrome(string palindrome) {
         
-        bool flag = false;
-        for(auto it : palindrome){
-            if(it != 'a'){
-                flag = true;
-            }
-        }
+        
         if(palindrome.size() == 1){
             return "";
         }
-        if(flag == false and palindrome.size() == 1){
-            return "";
-            
-        }
+        
         int n = palindrome.size();
-        if(!flag){
-            palindrome[n - 1] = 'b';
-            return palindrome;
-        }
+        
         bool found = false;
         char c = 'a';
         for(int i = 0 ; i < palindrome.size() ; i++){
