@@ -41,7 +41,7 @@ struct Node
 */
 class Solution{
     public:
-    Node * dfs(int in[] , int pre[] , int lp , int rp , int l , int r){
+    Node * dfs(int in[] , int pre[] , int lp  , int l , int r){
         if(l > r){
             return NULL;
         }
@@ -52,13 +52,13 @@ class Solution{
             j++;
         }
         int ele = j - l;
-        root -> left = dfs(in , pre , lp + 1 , lp + ele , l , j - 1 );
-        root -> right = dfs(in , pre , lp + ele + 1 , rp , j + 1 , r);
+        root -> left = dfs(in , pre , lp + 1 , l , j - 1 );
+        root -> right = dfs(in , pre , lp + ele + 1  , j + 1 , r);
         return root;
     }
     Node* buildTree(int in[],int pre[], int n , int l = 0 , int cur = 0)
     {
-        return dfs(in  , pre , 0 , n - 1 , 0 , n - 1);
+        return dfs(in  , pre , 0  , 0 , n - 1);
     }
 };
 
