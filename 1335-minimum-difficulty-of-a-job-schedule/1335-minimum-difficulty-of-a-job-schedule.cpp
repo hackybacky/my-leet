@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[311][12];
+    int dp[301][11];
   
     int minDifficulty(vector<int>& job, int d) {
         memset(dp ,1e6 ,sizeof(dp));
