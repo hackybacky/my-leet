@@ -16,22 +16,17 @@ class Solution
     {
         // your code here
         deque<int > q;
-        for(int i = 0 ; i < k  ; i++){
-            int cur = arr[i];
-            while(!q.empty() and arr[q.back()] < cur){
-                q.pop_back();
-            }
-            q.push_back(i);
-        }
+       
         vector<int >ans;
-        ans.push_back(arr[q.front()]);
-        for(int  i = k ; i < n ; i++){
+        // ans.push_back(arr[q.front()]);
+        for(int  i = 0 ; i < n ; i++){
             int cur = arr[i];
             while(!q.empty() and q.front() <= i - k)q.pop_front();
             while(!q.empty() and arr[q.back()] < cur){
                 q.pop_back();
             }
             q.push_back(i);
+            if(i >= k - 1)
             ans.push_back(arr[q.front()]);
         }
         return ans;
