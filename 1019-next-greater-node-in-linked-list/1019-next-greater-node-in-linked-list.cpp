@@ -11,7 +11,6 @@
 class Solution {
 public:
     vector<int> nextLargerNodes(ListNode* head) {
-        
         stack<ListNode *> st;
         auto node = head;
         int cnt = 0;
