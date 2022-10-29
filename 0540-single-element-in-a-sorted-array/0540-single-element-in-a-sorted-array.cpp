@@ -14,7 +14,7 @@ public:
             if(mid-1>=0 and a[mid]==a[mid-1])flag=false;
             if(flag)return a[mid];
             if(o){
-                if(mid-1>=0 and a[mid]==a[mid-1])l=mid+2;
+                if(mid-1>=0 and a[mid]==a[mid-1])l=mid+1;
                 else r=mid-1;
             }
             else {
