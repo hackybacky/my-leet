@@ -20,7 +20,7 @@ public:
                 int j=i+1;
                 cur_sum-=cand[i];
                 cur.pop_back();
-                while(j<cand.size() and cand[j]==cand[i])i++,j++;
+                // while(j<cand.size() and cand[j]==cand[i])i++,j++;
             }
         }
         
