@@ -63,9 +63,9 @@ class Solution
             cur = next;
             cnt++;
         }
-        if(next ){
-            head -> next = reverse(next , k);
-        }
+        // if(next ){
+        if(next)head -> next = reverse(next , k);
+        // }
         return prev;
     }
 };
