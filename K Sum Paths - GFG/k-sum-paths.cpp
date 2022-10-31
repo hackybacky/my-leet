@@ -114,7 +114,7 @@ class Solution{
         dfs(root -> left , k , su , mp);
         dfs(root -> right , k ,su , mp);
         mp[su]--;
-        su -= root -> data;
+        // su -= root -> data;
         
         
     }
