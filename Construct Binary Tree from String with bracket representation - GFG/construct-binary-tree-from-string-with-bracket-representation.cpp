@@ -39,12 +39,13 @@ public:
     // function to construct tree from string
     int find_mid(string & s , int l , int r){
         stack<char > st;
+        int cnt = 0;
         for(int i = l ; i <=r ; i++){
             if(s[i] == '(')
-                st.push('(');
+                cnt++;
             else if(s[i] == ')'){
-                st.pop();
-                if(st.empty()){
+                cnt--;
+                if(cnt == 0){
                     return i;
                 }
             }
