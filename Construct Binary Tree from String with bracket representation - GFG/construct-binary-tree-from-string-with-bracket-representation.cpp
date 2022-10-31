@@ -53,7 +53,7 @@ public:
         return -1;
     }
     Node * contruct(string &s ,  int l , int r){
-        if(l > r){
+        if(l > r ){
             return NULL;
         }
         
@@ -64,7 +64,7 @@ public:
             d += s[t++];
         Node * root = new Node(stoi(d));
         // cout << root ->data <<" " << mid << endl;
-        if(mid != -1)root -> left = contruct(s , t + 1 , mid - 1);
+        if(mid != -1 )root -> left = contruct(s , t + 1 , mid - 1);
         if(mid != -1)root -> right = contruct(s , mid + 2 , r - 1);
         return root;
         
