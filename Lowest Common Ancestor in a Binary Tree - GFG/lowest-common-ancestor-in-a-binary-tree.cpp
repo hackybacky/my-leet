@@ -38,7 +38,7 @@ class Solution
 {
     public:
     //Function to return the lowest common ancestor in a Binary Tree.
-    Node * give_me_lca(Node * root , int a , int b){
+    Node * give_me_lca(Node * root , int  a , int b ){
         if(!root){
             return NULL;
         }
