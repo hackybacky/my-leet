@@ -31,16 +31,16 @@ public:
         }
         if(dis > 0){
             mp[root] = dis;
-            cout << root -> val << " "<<dis<< endl;
         }
         
         return dis;
     }
-    vector<int>ans;
+    // vector<int>ans;
     int K ;
-    void dfs2(TreeNode * root , int dis){
+    vector<int> dfs2(TreeNode * root , int dis){
+        vector<int>ans;
         if(!root){
-            return ;
+            return ans;
         }
         if(mp.find(root) != mp.end()){
             dis =K - mp[root];
@@ -48,14 +48,21 @@ public:
         if(dis == 0 ){
             ans.push_back(root -> val);
         }
-        dfs2(root -> left , dis - 1);
-        dfs2(root -> right , dis - 1);
+        vector<int> a = dfs2(root -> left , dis - 1);
+        vector<int> b = dfs2(root -> right , dis - 1);
+        for(auto it : a){
+            ans.push_back(it);
+        }
+        for(auto it : b){
+            ans.push_back(it);
+        }
+        return ans;
     }
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         dfs(root , target);
         K = k;
-        dfs2(root , -1);
-        return ans;
+        return dfs2(root , -1);
+        // return ans;
         
     }
 };
