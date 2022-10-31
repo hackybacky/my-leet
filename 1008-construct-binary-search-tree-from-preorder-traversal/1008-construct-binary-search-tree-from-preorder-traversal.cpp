@@ -11,21 +11,18 @@
  */
 class Solution {
 public:
-    TreeNode * construct(int left , int right , vector<int>&pre ){
-        if(left > right){
+    TreeNode * construct(vector<int>&pre , int & index , int maxi){
+        
+        if(index >= pre.size() or maxi < pre[index]){
             return NULL;
-            
         }
-        TreeNode * root = new TreeNode(pre[left]);
-        int cur = left + 1;
-        while(cur <= right and pre[cur] < pre[left])
-            cur++;
-        root -> left = construct(left + 1 , cur - 1 , pre);
-        root -> right = construct(cur , right , pre);
+        TreeNode * root = new TreeNode(pre[index++]);
+        root -> left = construct(pre , index , root -> val);
+        root -> right = construct(pre , index , maxi);
         return root;
     }
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-        
-        return construct(0 , preorder.size() - 1, preorder);
+        int index = 0;
+        return construct(preorder , index , INT_MAX);
     }
 };
