@@ -96,23 +96,23 @@ class Solution {
     // Function to return the diameter of a Binary Tree.
     int dfs(Node * root , int & ans){
         if(!root){
-            return -1;
-        }
-        if (!root -> left and !root -> right){
             return 0;
         }
-        int l =1 + dfs(root -> left , ans  );
-        int r =1 +  dfs(root -> right , ans );
+        // if (!root -> left and !root -> right){
+        //     return 1;
+        // }
+        int l = dfs(root -> left , ans  );
+        int r = dfs(root -> right , ans );
         
-        ans = max(l  + r  , ans);
+        ans = max(l  + r + 1  , ans);
         
-        return max(l , r);
+        return max(l , r) + 1;
         
     }
     int diameter(Node* root) {
         int ans = 0;
         dfs(root , ans);
-        return ans + 1;
+        return ans ;
     }
 };
 
