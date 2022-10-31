@@ -47,7 +47,7 @@ public:
     bool findTarget(TreeNode* root, int k) {
         BSTIterator left(root , false);
         BSTIterator right(root , true);
-        
+        vector<int>ans;
         int l = left.next() , r = right.next();
         while(l < r){
             int cur = l + r;
@@ -58,9 +58,13 @@ public:
                 r =right.next();
             }
             else{
-                return true;
+                ans.push_back(l);
+                cout << l << " " << r << endl;
+                l = left.next();
+                r = right.next();
+                // return true;
             }
         }
-        return false;
+        return ans.size() > 0;
     }
 };
