@@ -115,12 +115,12 @@ class Solution{
         if(root==NULL){
             x.isBst=true;
             x.size=0;
-            x.mn=INT_MAX;
+            x.mn = INT_MAX;
             x.mx= INT_MIN;
             return x;
         }
-        struct cur left = recur(root->left);
-        struct cur right = recur(root->right);
+        cur left = recur(root->left);
+        cur right = recur(root->right);
         if(left.isBst and right.isBst and root->data>left.mx and root->data<right.mn){
             x.isBst=1;
             x.size=1+left.size+right.size;
