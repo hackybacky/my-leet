@@ -1,7 +1,6 @@
 # Largest BST
-##  Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a binary tree. Find the size of its largest subtree that is a Binary Search Tree.<br>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a binary tree. Find the size of its largest subtree that is a Binary Search Tree.<br>
 <strong>Note: </strong>Here Size is equal to the number of nodes in the subtree.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
@@ -45,5 +44,4 @@ You don't need to read input or print anything. Your task is to complete the fun
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ Number of nodes ≤ 10<sup>5</sup><br>
 1 ≤ Data of a node ≤ 10<sup>6</sup></span></p>
- <p></p>
-            </div>
+</div>
