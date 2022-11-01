@@ -11,50 +11,31 @@
  */
 class Solution {
 public:
-   void recoverTree(TreeNode* root) {
-       TreeNode* curr=root,*prev=NULL,*a=NULL,*b=NULL;
-      
-	  while(curr!=NULL){
-        if(curr->left==NULL){
-          if(prev!=NULL && prev->val>curr->val){
-            if(a==NULL){
-              a=prev;
+   TreeNode * first , * second , * third;
+    
+    void inorder(TreeNode * root , TreeNode * & prev){
+        if(!root){
+            return ;
+        }
+        inorder(root -> left , prev);
+        if(prev and prev -> val > root -> val){
+            if(first == NULL){
+                first = prev , second = root;
             }
-            b=curr;
-          }
-          prev=curr;
-		  
-          curr=curr->right;
+            else third = root;
         }
-        else{
-          TreeNode* leftNode=curr->left;
-          while(leftNode->right!=NULL && leftNode->right!=curr){
-            leftNode=leftNode->right;  
-          }
-          if(leftNode->right==NULL){
-            leftNode->right=curr;
-            curr=curr->left;
-          }
-          else{
-            leftNode->right=NULL;
-			
-            if(prev->val>curr->val){
-             if(a==NULL){
-              a=prev;
-             }
-             b=curr;
-           }
-            prev=curr;
-			//Main Logic ends----------------
-            curr=curr->right;
-          }
-        }
-      }
-	  
-      if(a!=NULL){
-        int temp=a->val;
-        a->val=b->val;
-        b->val=temp;
-      }  
+        prev = root;
+        inorder(root -> right , prev);
+    }
+   void recoverTree(TreeNode* root) {
+       TreeNode * prev = NULL;
+       inorder(root , prev);
+       if(first and third){
+           swap(first -> val , third -> val);
+           
+       }
+       else if(first ){
+           swap(first -> val , second -> val);
+       }
     }
 };
