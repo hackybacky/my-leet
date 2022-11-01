@@ -125,7 +125,7 @@ class Solution{
             x.isBst=1;
             x.size=1+left.size+right.size;
             ans=max(ans,x.size);
-            x.mx=max(root->data,right.mx);
+            x.mx=max(root -> data , right.mx);
             x.mn=min(root->data,left.mn);
         }
         else{
@@ -133,7 +133,7 @@ class Solution{
             x.isBst=0;
             x.size=0;
             x.mn=INT_MAX;
-            x.mx=0;
+            x.mx= INT_MIN;
         }
         
         return x;
