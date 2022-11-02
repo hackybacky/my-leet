@@ -3,8 +3,8 @@ public:
     int minMutation(string start, string end, vector<string>& bank) {
         
         priority_queue<pair<int , string >> pq;
-        map<string , bool > mp;
-        map<string , int > dis;
+        unordered_map<string , bool > mp;
+        unordered_map<string , int > dis;
         for(auto it : bank){
             mp[it] = true;
         }
@@ -20,8 +20,10 @@ public:
             }
             // cout << "hello" << endl;
             pq.pop();
+            
             for(int i = 0 ; i < s.size() ; i++){
                 char current = s[i];
+                
                 for(char c = 'A' ; c <= 'Z' ; c++){
                     s[i] = c;
                     // cout <<s  << endl;
