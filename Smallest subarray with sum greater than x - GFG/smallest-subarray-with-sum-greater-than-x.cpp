@@ -15,7 +15,7 @@ class Solution{
         
         int ans = INT_MAX;
         int r = 0;
-        while(r < n){
+        while(r < n or sum > x){
             bool flag = false;
             if(sum <= x){
                 sum += arr[r++];
@@ -30,11 +30,11 @@ class Solution{
             
             // cout << sum <<" " << l <<" "<<r << endl;
         }
-        while(l < n and sum - arr[l] > x){
-            sum -= arr[l];
-            l++;
-            ans = min(ans , r - l);
-        }
+        // while(l < n and sum - arr[l] > x){
+        //     sum -= arr[l];
+        //     l++;
+        //     ans = min(ans , r - l);
+        // }
         if(ans == INT_MAX){
             ans = 0;
         }
