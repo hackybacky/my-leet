@@ -65,7 +65,6 @@ public:
         for(auto &it : ans){
             sort(it.begin() , it.end());
         }
-        // sort(ans.begin() ,ans.end());
         for(int i = ans.size() ; i < s.size() ; i++){
             ans.push_back({"0"});
         }
