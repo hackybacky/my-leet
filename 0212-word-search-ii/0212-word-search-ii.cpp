@@ -19,9 +19,11 @@ public:
             Trie(){
                 root = new node();
             }
-            set<string>ans;
+        
+            vector<string>ans;
             vector<int> x = {1, -1, 0, 0};
-             vector<int> y = {0, 0, 1, -1};
+            vector<int> y = {0, 0, 1, -1};
+        
             void insert(string & word){
                 node * curn = root;
                 for(auto it : word){
@@ -32,6 +34,7 @@ public:
                 }
                 curn -> setEnd();
             }
+        
             void search(vector<vector<char >> &board , int curx , int cury , string& cur  , node * no ){
                 
                 if(curx < 0 or cury < 0 or curx >= board.size() or cury >= board[0].size() or board[curx][cury] == 'V')return ;
@@ -42,7 +45,7 @@ public:
                 no = no -> links[c - 'a'];
                 cur += c;
                 if(no -> isEnd){
-                    ans.insert(cur);
+                    ans.push_back(cur);
                     no -> isEnd = false;
                 }
                 board[curx][cury] = 'V';
@@ -70,7 +73,7 @@ public:
                 trie.search(board , i , j , cur , trie.root);
             }
         }
-        vector<string>a(trie.ans.begin() , trie.ans.end());
-        return a;
+        // vector<string>a(trie.ans.begin() , trie.ans.end());
+        return trie.ans;
     }
 };
