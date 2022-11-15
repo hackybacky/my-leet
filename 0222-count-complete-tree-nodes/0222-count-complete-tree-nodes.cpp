@@ -16,7 +16,7 @@ public:
             return 0;
         }
         
-        return 1 + max(height(root -> left) , height(root -> right));
+        return 1 + height(root -> left) ;
     }
     int countNodes(TreeNode* root) {
         if(!root){
@@ -31,7 +31,6 @@ public:
             ans = (1 << hl)  + countNodes(root -> right);
         }
         else{
-        
             ans = (1 << hr) + countNodes(root -> left);
         }
         
