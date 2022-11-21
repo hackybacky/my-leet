@@ -6,17 +6,14 @@ using namespace std;
 class Solution{
 	public:
 	vector<vector<int>> fans;
-	void dfs(int n , vector<int > ans , int cur , int prev  ){
+	void dfs(int n , vector<int >& ans , int cur , int prev  ){
 	    if(cur > n){
 	        return ;
 	    }
 	    if(n == 0){
-	       // reverse(ans.begin() , ans.end());
 	        fans.push_back(ans);
 	        return ;
 	    }
-	    
-	   // cur++;
 	    dfs(n , ans , cur + 1 , prev);
 	    if(cur != 0 and cur <= prev){
 	        ans.push_back(cur);
@@ -30,8 +27,7 @@ class Solution{
         // Code here
         vector<int>ans;
         dfs(n , ans , 0 , n + 1);
-        // sort(fans.begin() , fans.end());
-        // reverse(fans.begin() , fans.end());
+      
         return fans;
     }
 };
