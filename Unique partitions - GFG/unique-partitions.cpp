@@ -11,27 +11,27 @@ class Solution{
 	        return ;
 	    }
 	    if(n == 0){
-	        reverse(ans.begin() , ans.end());
+	       // reverse(ans.begin() , ans.end());
 	        fans.push_back(ans);
 	        return ;
 	    }
 	    
-	    if(cur != 0 and cur >= prev){
+	   // cur++;
+	    dfs(n , ans , cur + 1 , prev);
+	    if(cur != 0 and cur <= prev){
 	        ans.push_back(cur);
 	        dfs(n - cur , ans , 0 , cur);
 	        ans.pop_back();
 	    }
 	    
-	    cur++;
-	    dfs(n , ans , cur , prev);
 	    
 	}
     vector<vector<int>> UniquePartitions(int n) {
         // Code here
         vector<int>ans;
-        dfs(n , ans , 0 , 0);
-        sort(fans.begin() , fans.end());
-        reverse(fans.begin() , fans.end());
+        dfs(n , ans , 0 , n + 1);
+        // sort(fans.begin() , fans.end());
+        // reverse(fans.begin() , fans.end());
         return fans;
     }
 };
