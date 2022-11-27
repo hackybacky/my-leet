@@ -17,23 +17,18 @@ public:
     }
 };
     int numberOfArithmeticSlices(vector<int>& nums) {
-        unordered_map<pair<int , long long > , int , hash_pair> dp;
+        unordered_map<pair<int ,long > , int , hash_pair> dp;
         
         int ans = 0;
         int n = nums.size();
         // for(int i = 0 ;i < n ;i++){
         //     dp[{i , 0}] = 1;
         // }
-        for(int i = 0 ;i < n ;i++){
-            int cur = nums[i];
-            for(int j = 0 ; j < i  ; j++){
-                
-                int ncur = nums[j];
-                long dif =  (long long  )cur - (long )ncur;
+        for(int i = n - 1 ;i >= 0 ;i--){
+            for(int j = n - 1 ;j > i ;j--){
+                long dif = (long)nums[i] - (long)nums[j];
                 dp[{i , dif}] += dp[{j , dif}] + 1;
-                // if(dp[{i, dif}])
                 ans += dp[{j , dif}];
-                
             }
         }
         return ans;
