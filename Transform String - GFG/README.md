@@ -1,7 +1,6 @@
 # Transform String
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given two strings A and B. Find the minimum number of steps required to transform string A into string B. The only allowed operation for the transformation is selecting a character from string A and inserting it in the beginning of string A.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given two strings A and B. Find the minimum number of steps required to transform string A into string B. The only allowed operation for the transformation is selecting a character from string A and inserting it in the beginning of string A.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -39,5 +38,4 @@ You dont need to read input or print anything. Complete the function<strong> tra
 1&lt;= A.length(), B.length()&nbsp;&lt;= 10<sup>4</sup></span></p>
 
 <p>&nbsp;</p>
- <p></p>
-            </div>
+</div>
