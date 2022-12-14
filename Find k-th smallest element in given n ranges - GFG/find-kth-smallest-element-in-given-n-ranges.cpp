@@ -44,7 +44,6 @@ class Solution{
         int first ;
         for(auto it : range){
             mp[len] = it[0];
-            
             len += it[1] - it[0] + 1;
         }
         first = range[0][0];
