@@ -47,6 +47,6 @@ public:
                 dp[i][j] = ans;
             }
         }
-        return recur(0 , 0 , s , p);
+        return dp[0][0];
     }
 };
