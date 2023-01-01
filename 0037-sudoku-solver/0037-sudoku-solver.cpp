@@ -35,7 +35,7 @@ public:
             for(int j = 0 ;j < 9 ;j++){
                 if(board[i][j] != '.')continue;
                 for(char k = '1'  ; k <= '9' ; k++){
-                    if(isvalid(board , i , j , k)){
+                    if(check(board , j , i , k)){
                         board[i][j] = k;
                         if(solve(board ))return true;
                         else
