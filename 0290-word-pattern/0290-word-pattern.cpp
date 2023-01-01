@@ -17,6 +17,6 @@ public:
             i++;
         }
         return i == pattern.size();
-        return true;
+    
     }
 };
