@@ -31,7 +31,7 @@ public:
         slow = head;
         int parity = 0;
         auto node = new ListNode(-1);
-        while(reverse_head){
+        while(slow or reverse_head){
             if(parity == 0){
                 node -> next = slow;
                 slow = slow -> next;
@@ -43,8 +43,7 @@ public:
             node = node -> next;
             parity ^= 1;
         }
-        if(slow)
-        node -> next = slow;
+        
         
         
     }
