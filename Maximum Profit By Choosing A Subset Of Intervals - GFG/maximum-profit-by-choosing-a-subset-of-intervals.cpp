@@ -21,13 +21,12 @@ class Solution {
         for(int i = 0 ; i < n ; i++){
             auto it2 = intervals[i];
             int start = it2[0] , end = it2[1] , profit = it2[2];
-            auto it = dp.upper_bound(start );
+            auto it = dp.lower_bound(start + 1 );
             
-            if(it != dp.begin()){
-                it = prev(it);
+            it = prev(it);
                 
-                dp[end] = max(profit + (*it).second , maxi);
-            }
+            dp[end] = max(profit + (*it).second , maxi);
+            
             maxi = max(dp[end] , maxi);
             // else dp[end] = max(profit , (*dp.rbegin()).second);
             
