@@ -5,12 +5,11 @@ public:
         int maxi = 1 , mini = 1;
         int ans = INT_MIN;
         for(auto it : nums){
+            if(it < 0)swap(maxi , mini);
             
-            ans = max({mini * it , maxi * it , ans , it});
-            int nmaxi  = max({it , mini * it , maxi * it});
-            int nmini = min({it , mini * it , maxi * it} );
-            mini = nmini;
-            maxi = nmaxi;
+            maxi = max(it , maxi * it);
+            mini = min(it , mini * it);
+            ans = max(maxi , ans);
             
         }
         return ans;
