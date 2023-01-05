@@ -10,7 +10,6 @@ public:
         for(int i = n - 1 ; i >= 0 ; i--){
             int cur0 = 0  , cur1 = 1;
             for(int j = 0 ; j < 2 ; j++){
-                // dp[i][j] = dp[i + 1][j];
                 int ans = 0;
                 if(j == 0){
                     cur0 = agla0;
@@ -18,7 +17,6 @@ public:
                     cur0 = max(cur0 , ans);
                 }
                 else  ans = prices[i] + twoagla0 , cur1 = max(ans , agla1);
-            
             }
             twoagla0 = agla0;
             agla0 = cur0;
