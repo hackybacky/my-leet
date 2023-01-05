@@ -3,7 +3,7 @@ public:
     int dp[5001][2];
     int recur(int i , int par,vector<int>&prices){
         if(i>=prices.size()){
-            // if(par==1)return INT_MIN/2;
+            if(par==1)return INT_MIN/2;
             return 0;
         }
         
@@ -23,6 +23,6 @@ public:
     }
     int maxProfit(vector<int>& prices) {
         memset(dp,-1,sizeof(dp));
-        return recur(0,0,prices);
+        return recur(0 , 0 , prices);
     }
 };
