@@ -8,7 +8,7 @@ public:
         int twoagla0 = 0;
         int agla0 = 0;
         for(int i = n - 1 ; i >= 0 ; i--){
-            int cur0 = 0  , cur1 = 1;
+            int cur0 = 0  , cur1 = 0;
             for(int j = 0 ; j < 2 ; j++){
                 int ans = 0;
                 if(j == 0){
