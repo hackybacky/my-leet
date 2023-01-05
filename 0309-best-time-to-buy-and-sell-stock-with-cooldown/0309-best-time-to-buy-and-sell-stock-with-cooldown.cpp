@@ -3,7 +3,6 @@ public:
     int dp[5001][2];
     int recur(int i , int par,vector<int>&prices){
         if(i>=prices.size()){
-            if(par==1)return INT_MIN/2;
             return 0;
         }
         
@@ -22,7 +21,20 @@ public:
         return dp[i][par]=max(ans,ans2);
     }
     int maxProfit(vector<int>& prices) {
-        memset(dp,-1,sizeof(dp));
-        return recur(0 , 0 , prices);
+        memset(dp,0,sizeof(dp));
+        int n = prices.size();
+        
+        for(int i = n - 1 ; i >= 0 ; i--){
+            for(int j = 0 ; j < 2 ; j++){
+                dp[i][j] = dp[i + 1][j];
+                int ans = 0;
+                if(j == 0){
+                    ans = -prices[i] + dp[i + 1][1];
+                }
+                else ans = prices[i] + dp[i + 2][0];
+                dp[i][j] = max(ans , dp[i][j]);
+            }
+        }
+        return dp[0][0];
     }
 };
