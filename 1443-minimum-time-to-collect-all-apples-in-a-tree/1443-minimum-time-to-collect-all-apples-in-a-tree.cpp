@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<vector<int>> graph;
-    int cnt = 0;
     int ans = 0;
     int dfs(int node , int par , int dis ,vector<bool>& hasApple){
         
@@ -15,9 +14,8 @@ public:
             cnt++;
         }
         if(cnt > 1){
-            ans -=(cnt - 1) *2 * dis;
+            ans -= (cnt - 1) * 2 * dis;
         }
-        // if(hasApple[node] and cnt == 1)ans += dis;
         return cnt >= 1 ;
     }
     int minTime(int n, vector<vector<int>>& edges, vector<bool>& hasApple) {
@@ -28,7 +26,7 @@ public:
             graph[v].push_back(u);
             graph[u].push_back(v);
         }
-        int lans = dfs(0 , -1 , 0 , hasApple);
+        dfs(0 , -1 , 0 , hasApple);
         return ans ;
     }
 };
