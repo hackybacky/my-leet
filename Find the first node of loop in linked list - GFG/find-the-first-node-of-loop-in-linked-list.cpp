@@ -49,7 +49,7 @@ class Solution
         // your code here
        if(!head or !head->next)return -1;
         auto slow= head , fast = head;
-        while(fast and fast->next  ){
+        while(fast and fast->next   ){
             fast= fast->next->next;
             slow= slow->next;
             if(slow == fast)break;
