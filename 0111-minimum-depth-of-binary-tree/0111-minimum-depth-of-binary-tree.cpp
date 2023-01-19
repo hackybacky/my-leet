@@ -22,7 +22,7 @@ public:
             ans2 = minDepth(root -> right);
         }
         if(!root -> right and !root -> left) ans = 0;
-        cout << root -> val << " " << ans << " "<< ans2 << endl;
+        // cout << root -> val << " " << ans << " "<< ans2 << endl;
         return min(ans , ans2) + 1; 
     }
 };
