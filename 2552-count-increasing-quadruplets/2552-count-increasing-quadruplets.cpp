@@ -10,13 +10,11 @@ public:
                 less[i][j] += (j - 1 >= 0 ? less[i][j - 1] : 0) + (nums[j] < nums[i] );
             }
         }
-        
         long long ans = 0;
         for(int j = 1 ; j < n - 2; j++){
             for(int k = j ; k < n - 1 ; k++){
                 if(nums[k] < nums[j]){
                     long long int g =(n - k - 1  - (less[j][n - 1] - less[j][k]));
-                
                     ans += ((long long)less[k][j - 1] * g);
                 }
             }
