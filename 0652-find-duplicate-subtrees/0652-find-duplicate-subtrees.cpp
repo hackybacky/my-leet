@@ -25,7 +25,7 @@ public:
         cur += to_string(root -> val );
         cur +="$"+ l + "$" + r;
         if(mp.find(cur) != mp.end() and mp[cur] == 1 ){
-            cout << cur << endl;
+            // cout << cur << endl;
             ans.push_back(root);
         }
         mp[cur] += 1;
