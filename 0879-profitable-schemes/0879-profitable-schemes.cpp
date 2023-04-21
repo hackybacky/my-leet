@@ -8,10 +8,10 @@ public:
             return pro >= minprofit and mem <= N;
         }
         if(mem > N)return 0;
-        if(pro >= 100)pro = 100;
+        
         if(dp[i][pro][mem] != -1)return dp[i][pro][mem];
         int ans = 0 ;
-        int take = recur(i + 1 , pro + profit[i],mem + group[i] , group , profit);
+        int take = recur(i + 1 , min(100 , pro + profit[i]),mem + group[i] , group , profit);
         int ntake = recur(i + 1 , pro , mem , group , profit);
         ans = (ans + take )% mod;
         ans = (ans + ntake )% mod;
