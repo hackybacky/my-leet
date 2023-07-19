@@ -11,19 +11,16 @@
  */
 class Solution {
 public:
-    void flat(TreeNode * root , TreeNode *& prv){
-        if(!root)return;
-        
-        flat(root -> right , prv);
-        flat(root -> left , prv);
-        root -> right = prv;
+    void flag(TreeNode * root , TreeNode *&prev){
+        if(!root)return ;
+        flag(root -> right , prev);
+        flag(root -> left , prev);
+        root -> right = prev;
         root -> left = NULL;
-        prv = root;
-        
-        
+        prev = root;
     }
     void flatten(TreeNode* root) {
-        TreeNode * prv = NULL;
-        flat(root , prv);
+        TreeNode * p = NULL;
+        flag(root , p);
     }
 };
