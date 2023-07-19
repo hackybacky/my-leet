@@ -13,18 +13,18 @@ class Solution {
 public:
     int K;
     int ans;
-    int giveans(TreeNode *root){
-        if(root==nullptr)return INT_MAX;
+    void giveans(TreeNode *root){
+        if(root==nullptr)return ;
         
-        int ans = giveans(root->left);
+        giveans(root->left);
         K--;
-        if(K==0)return root->val;
-        int ans2 = giveans(root->right);
-        return min(ans , ans2);
+        if(K==0)ans =  root->val;
+        giveans(root->right);
+        // return min(ans , ans2);
     }
     int kthSmallest(TreeNode* root, int k) {
         K=k;
-        return    giveans(root);
+        giveans(root);
         return ans;
     }
 };
