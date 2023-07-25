@@ -10,16 +10,17 @@
  */
 class Solution {
 public:
-    ListNode *ans;
-    void reverse(ListNode * cur, ListNode*prev){
-        if(cur==nullptr){ans=prev;return;}
-        reverse(cur->next,cur);
-        cur->next=prev;
-    }
     ListNode* reverseList(ListNode* head) {
-        auto prev= new ListNode();
-        prev=NULL;
-        reverse(head,prev);
-        return ans;
+        if(!head)return head;
+        auto d = head;
+        auto nn = head -> next;
+        while(head and nn){
+            auto nxt = nn -> next;
+            nn -> next = head;
+            head = nn;
+            nn = nxt;
+        }
+        d -> next = NULL;
+        return head;
     }
 };
