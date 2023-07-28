@@ -21,7 +21,6 @@ public:
         nums = num;
         int n = nums.size();
         int ans = recur(0 , n - 1 , 0);
-        cout << ans << endl;
         if(ans < 0)return false;
         return true;
     }
