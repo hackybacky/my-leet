@@ -1,20 +1,19 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        reverse(s.begin(),s.end());
-        int j =0;
-        int n = s.size();
-        for(int i=0;i<n ; i++ ){
-            if(s[i]!=' '){
-                if(j!=0)s[j++]=' ';
-                int k = i;
-                int start=j;
-                while(k<n and s[k]!=' ')s[j++]=s[k++];
-                reverse(s.begin()+start,s.begin()+j);
-                i=k;
-            }
+        reverse(s.begin() , s.end());
+        
+        stringstream ss(s);
+        string cur;
+        string ans = "";
+        while(getline(ss , cur , ' ')){
+            // cout << cur << endl;
+            if(cur.size() == 0)continue;
+            reverse(cur.begin() , cur.end());
+            ans += cur + " ";
+            
         }
-        s.erase(s.begin()+j,s.end());
-        return s;
+        ans.pop_back();
+        return ans;
     }
 };
