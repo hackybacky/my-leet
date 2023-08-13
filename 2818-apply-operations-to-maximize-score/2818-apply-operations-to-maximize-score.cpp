@@ -1,80 +1,53 @@
+int memo[100001] = {}, mod = 1000000007;
+const int primes[65] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 
+    53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 
+    137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 
+    227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313};  
 class Solution {
 public:
-    vector<int> next(vector<int>nums ){
-        int n = nums.size();
-        vector<int>d(n , 1);
-        vector<int>nxt(n , n);
-        stack<int>st;
-        for(int i = 0 ; i < n ; i++){
-            int cur = 0;
-            for(int j = 2 ; j * j <= nums[i] ; j++){
-                if(nums[i] % j == 0)cur++;
-                while(nums[i] % j == 0)nums[i]/= j;
-            }
-             if(nums[i] > 1)cur++;
-            while(st.size() and d[st.top()] < cur ){
-                nxt[st.top()] = i;
-                st.pop();
-            }
-            d[i] = cur;
-            st.push(i);
-            
-        }
-        return nxt;
+    int modPow(int x, unsigned int y, unsigned int m)
+    {
+        if (y == 0)
+            return 1;
+        long p = modPow(x, y / 2, m) % m;
+        p = (p * p) % m;
+        return y % 2 ? (p * x) % m : p;
     }
-    vector<int> rnext(vector<int>nums){
-        int n = nums.size();
-        vector<int>d(n , 1);
-        vector<int>nxt(n , -1);
-        stack<int>st;
-        for(int i = n - 1 ; i >= 0 ; i--){
-            int cur = 0;
-            for(int j = 2 ; j * j <= nums[i] ; j++){
-                if(nums[i] % j == 0)cur++;
-                while(nums[i] % j == 0)nums[i]/= j;
+    int primeScore(int n) {
+        if (memo[n])
+            return memo[n];
+        int score = 0, val = n;
+        for (int i = 0; i < 65 && n >= primes[i]; ++i)
+            if (val % primes[i] == 0) {
+                ++score;
+                while (val % primes[i] == 0)
+                    val /= primes[i];
             }
-            if(nums[i] > 1)cur++;
-            while(st.size() and d[st.top()] <= cur ){
-                nxt[st.top()] = i;
-                st.pop();
-            }
-            d[i] = cur;
-            st.push(i);
-            
-        }
-        return nxt;
+        return memo[n] = score + (val > 1);
     }
-        const int mod = 1e9 + 7;
-    long long fastpow(long a,long long b){
-    long long res=1;
-    while (b>0){
-        if(b&1)res=(res*a)%mod;
-        a=(a*a)%mod;
-        b=b>>1;
-    }
-    return res%mod;
-}
-    int maximumScore(vector<int>& nums, int k) {
-        
-        vector<vector<int>> bnd;
-        auto agle = next(nums );
-        auto pichle = rnext(nums);
-        int n = nums.size();
-        for(int i = 0 ; i < n ;i++){
-            bnd.push_back({nums[i] , agle[i] , pichle[i] , i});
+    int maximumScore(vector<int>& n, int k) {
+        long long res = 1, sz = n.size();
+        vector<int> ids(sz), l(sz), r(sz), score_l(8, -1), score_r(8, sz);
+        for (int i = 0; i < sz; ++i) {
+            int score = primeScore(n[i]);
+            l[i] = *max_element(begin(score_l) + score, end(score_l));
+            score_l[score] = i;
         }
-        sort(bnd.rbegin() , bnd.rend());
-        int ans = 1;
-        for(int i = 0 ; i < n and k; i++){
-            int cntagle = bnd[i][1] - bnd[i][3];
-            int cntpichle = bnd[i][3] - bnd[i][2] - 1;
-            long long cnt = cntagle ;
-            cnt += (long long)cntagle *  (long long)cntpichle;
-            cnt = min(cnt , (long long)k);
-            ans = (ans * fastpow(bnd[i][0] , cnt))%mod;
-            k -= cnt;
-            
+        for (int i = sz - 1; i >= 0; --i) {
+            int score = primeScore(n[i]);
+            r[i] = *min_element(begin(score_r) + score + 1, end(score_r));
+            score_r[score] = i;
         }
-        return ans;
+        auto comp = [&](int i, int j){ return n[i] < n[j]; };
+        iota(begin(ids), end(ids), 0);
+        make_heap(begin(ids), end(ids), comp);
+        while (!ids.empty() && k > 0) {
+            int i = ids.front();
+            pop_heap(begin(ids), end(ids), comp); ids.pop_back();
+            long long take = min(k, (i - l[i]) * (r[i] - i));
+            res = (res * modPow(n[i], take, mod)) % mod;
+            k -= take;
+        }
+        return res;
     }
 };
