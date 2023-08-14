@@ -25,12 +25,12 @@ class Solution(object):
         previous = mn
         print(bmax)
         max_gap = 0
-        for i in range(0, n - 1):
+        for i in range(0, n ):
             if bmin[i] == 10**18 and bmax[i] == -10**18:
                 continue
             max_gap = max(max_gap , bmin[i] - previous)
             previous = bmax[i]
-        print(previous)
+            
         max_gap = max(max_gap , mx - previous)
         return max_gap
         return mx
