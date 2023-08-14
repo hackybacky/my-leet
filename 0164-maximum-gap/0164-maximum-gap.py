@@ -23,7 +23,6 @@ class Solution(object):
             bmin[index] = min(bmin[index] , nums[i])
             bmax[index] = max(bmax[index] , nums[i])
         previous = mn
-        print(bmax)
         max_gap = 0
         for i in range(0, n ):
             if bmin[i] == 10**18 and bmax[i] == -10**18:
@@ -33,5 +32,4 @@ class Solution(object):
             
         max_gap = max(max_gap , mx - previous)
         return max_gap
-        return mx
         
