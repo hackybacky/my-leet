@@ -19,7 +19,7 @@ public:
                 if( (n+ m ) %2 == 0){
                     return (max(left , left2) + min(right , right2))*1.0 /2;
                 }
-                return min(max(left , left2)  , min(right , right2));
+                return max(left , left2) ;
             }
             else{
                 if(left > right2)r = mid - 1;
