@@ -1,10 +1,8 @@
 class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
-        
         deque<int>st;
         int n = asteroids.size();
-    
         vector<int>ans;
         for(auto it : asteroids){
             if(it > 0)st.push_back(it);
