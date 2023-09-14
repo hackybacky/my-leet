@@ -12,11 +12,11 @@ public:
                 
                     st.pop();
                 }
-                if(st.empty() or st.top() < -it ){
+                if(st.empty()  ){
                     neg.push_back(it);
                 }
                 if(!st.empty() and st.top() == -it)st.pop();
-                // if(!st.empty())
+                
             }
         }
         vector<int>ans;
