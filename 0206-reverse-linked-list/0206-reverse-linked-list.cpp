@@ -10,17 +10,15 @@
  */
 class Solution {
 public:
+    auto reverse(ListNode *head){
+        if(!head or ! head -> next)return head;
+        auto rv = reverse(head -> next);
+        
+        head -> next -> next = head;
+        head -> next = NULL;
+        return rv;
+    }
     ListNode* reverseList(ListNode* head) {
-        if(!head)return head;
-        auto d = head;
-        auto nn = head -> next;
-        while(head and nn){
-            auto nxt = nn -> next;
-            nn -> next = head;
-            head = nn;
-            nn = nxt;
-        }
-        d -> next = NULL;
-        return head;
+        return reverse(head);
     }
 };
