@@ -35,7 +35,7 @@ public:
                     continue;
                 }
                 
-                cout << j << " "<< i << endl;
+                // cout << j << " "<< i << endl;
                 int f = i / j;
                 int f2 = j;
                 int g = d / f;
