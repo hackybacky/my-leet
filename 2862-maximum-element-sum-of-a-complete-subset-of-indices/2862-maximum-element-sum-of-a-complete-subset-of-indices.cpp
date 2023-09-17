@@ -28,14 +28,11 @@ public:
         DSU<10001> dsu;
         long long mx = 0;
         for(int i = 1 ; i <= n ; i++){
-            // mx = max(mx , (long long)nums[i - 1] * 2ll);
             for(int j = 1 ; j * j <= i;  j++){
                 int d = i * i;
                 if(i % j != 0){
                     continue;
                 }
-                
-                // cout << j << " "<< i << endl;
                 int f = i / j;
                 int f2 = j;
                 int g = d / f;
@@ -51,7 +48,6 @@ public:
             mp[pa] += nums[i - 1];
             
         }
-        
         long long maxi = 0;
         for(auto it : mp)maxi = max(maxi , it.second);
         return maxi;
