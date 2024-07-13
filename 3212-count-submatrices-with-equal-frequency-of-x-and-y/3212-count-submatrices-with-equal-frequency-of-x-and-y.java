@@ -20,7 +20,7 @@ class Solution {
             for(int j = 0 ; j < m;j++){
                 updateCnt(cntx,cnty,i,j,grid);
                 if(cntx[i][j] == cnty[i][j] && cntx[i][j]!=0){
-                    System.out.println(cntx[i][j]);
+                 //   System.out.println(cntx[i][j]);
                     ans++;
                 }
                 
